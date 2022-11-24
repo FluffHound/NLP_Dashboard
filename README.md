@@ -1,5 +1,6 @@
-# NLP_Dashboard
+# Dashboard Analisis Sentimen Calon Kandidat PilPres 2024
 *\#UNARIRHEBAT*
+
 Proyek dibuat untuk memenuhi tugas mata kuliah Natural Language Processing semester 5
 
 This project is made to fulfill Natural Language Processing course final project task
