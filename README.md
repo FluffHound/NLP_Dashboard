@@ -1,5 +1,5 @@
 # Dashboard Analisis Sentimen Calon Kandidat PilPres 2024
-*\#UNARIRHEBAT*
+*\#UNAIRHEBAT*
 
 Proyek dibuat untuk memenuhi tugas mata kuliah Natural Language Processing semester 5
 
