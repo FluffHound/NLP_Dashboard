@@ -44,8 +44,9 @@ factory_stop = StopWordRemoverFactory()
 stopword = factory_stop.create_stop_word_remover()
 
 # ===== Things to Query =====
-usernames = ['ganjarpranowo', 'prabowo', 'aniesbaswedan', 'AgusYudhoyono', 'ridwankamil']
 hashtags = ['ganjarpranowofor2024', 'prabowo', 'AniesPresiden2024', 'AHY', 'RidwanKamil']
+usernames = ['ganjarpranowo', 'prabowo', 'aniesbaswedan', 'AgusYudhoyono', 'ridwankamil']
+keywords = ['@ganjarpranowo', '@prabowo', '@aniesbaswedan', '@AgusYudhoyono', '@ridwankamil']
 
 # ==========================
 # ===== Scrap Hashtags =====
@@ -61,15 +62,13 @@ for user in range(len(hashtags)):
         tweets_list.append([tweet.id, tweet.date, tweet.user.username, tweet.content])
 
     tweets_df = pd.DataFrame(tweets_list, columns=['ID', 'Datetime', 'Username', 'Content'])
-    raw_tweets_df = tweets_df.copy()
 
     # ___Stemming & Remove Stopwords___
     tweets_df['clean_text'] = tweets_df['Content'].apply(lambda x: clean_text(x))
     tweets_df['clean_text'] = tweets_df['clean_text'].apply(lambda x: stopword.remove(x))
 
     # ___Export Data___
-    raw_tweets_df.to_csv('./Data Raw/raw_hashtag_{}.csv'.format(hashtags[user]), sep=';', index=False)
-    tweets_df.to_csv('./Data Clean/clean_hashtag_{}.csv'.format(hashtags[user]), sep=';', index=False)
+    tweets_df.to_csv('./Data Clean/hashtag_{}.csv'.format(hashtags[user]), sep=';', index=False)
 
 print('\n' + '========================= SCRAPE HASHTAG DONE =========================' + '\n')
 
@@ -87,16 +86,38 @@ for user in range(len(usernames)):
         user_profile_list.append([tweet.id, tweet.date, tweet.likeCount, tweet.content])
 
     user_tweets_df = pd.DataFrame(user_profile_list, columns=['ID', 'Datetime', 'Likes', 'Content'])
-    raw_user_tweets_df = user_tweets_df.copy()
 
     # ___Stemming & Remove Stopwords___
     user_tweets_df['clean_text'] = user_tweets_df['Content'].apply(lambda x: clean_text(x))
     user_tweets_df['clean_text'] = user_tweets_df['clean_text'].apply(lambda x: stopword.remove(x))
 
     # ___Export Data___
-    raw_user_tweets_df.to_csv('./Data Raw/raw_userProfile_{}.csv'.format(usernames[user]), sep=';', index=False)
-    user_tweets_df.to_csv('./Data Clean/clean_userProfile_{}.csv'.format(usernames[user]), sep=';', index=False)
+    user_tweets_df.to_csv('./Data Clean/userProfile_{}.csv'.format(usernames[user]), sep=';', index=False)
 
 print('\n' + '========================= SCRAPE USER PROFILE DONE =========================' + '\n')
+
+# =======================================
+# ===== Scrap Mentions Tweets =====
+# =======================================
+for user in range(len(keywords)):
+    print('\n' + 'Scraping mentions of @' + keywords[user] + '...')
+    # ___User Profile scraper___
+    user_mention_list = []
+
+    for i, tweet in enumerate(tqdm(sntwitter.TwitterSearchScraper(keywords[user]).get_items())):
+        if i > 1000:
+            break
+        user_mention_list.append([tweet.id, tweet.date, tweet.user.username, tweet.content])
+
+    mentions_tweets_df = pd.DataFrame(user_mention_list, columns=['ID', 'Datetime', 'Username', 'Content'])
+
+    # ___Stemming & Remove Stopwords___
+    mentions_tweets_df['clean_text'] = mentions_tweets_df['Content'].apply(lambda x: clean_text(x))
+    mentions_tweets_df['clean_text'] = mentions_tweets_df['clean_text'].apply(lambda x: stopword.remove(x))
+
+    # ___Export Data___
+    mentions_tweets_df.to_csv('./Data Clean/userMention_{}.csv'.format(keywords[user]), sep=';', index=False)
+
+print('\n' + '========================= SCRAPE USER MENTION DONE =========================' + '\n')
 
 print('ALL DONE!')
