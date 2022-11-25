@@ -1,0 +1,4 @@
+- Try more robust stemmer
+https://github.com/ariaghora/mpstemmer
+
+- Wordcloud export
