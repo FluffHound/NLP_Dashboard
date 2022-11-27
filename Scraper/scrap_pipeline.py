@@ -44,10 +44,6 @@ stemmer = factory.create_stemmer()
 factory_stop = StopWordRemoverFactory()
 stopword = factory_stop.create_stop_word_remover()
 
-# ___Tokenizing___
-def word_tokenize_wrapper(text):
-  return word_tokenize(text)
-
 # ===========================
 # ===== Things to Query =====
 # ===========================
@@ -76,10 +72,10 @@ for user in range(len(hashtags)):
     tweets_df['clean_text'] = tweets_df['clean_text'].apply(lambda x: stopword.remove(x))
     tweets_df.replace("", float("NaN"), inplace=True)
     tweets_df = tweets_df.dropna()
-    tweets_df['text_token'] = tweets_df['clean_text'].apply(word_tokenize_wrapper)
+    tweets_df['text_token'] = tweets_df['clean_text'].apply(lambda x: word_tokenize(x))
 
     # ___Export Data___
-    tweets_df.to_csv('./data_clean/hashtag_{}.csv'.format(hashtags[user]), sep=';', index=False)
+    tweets_df.to_json('./data_clean/hashtag_{}.json'.format(hashtags[user]))
 
 print('\n' + '========================= SCRAPE HASHTAG DONE =========================' + '\n')
 
@@ -104,10 +100,10 @@ for user in range(len(usernames)):
     user_tweets_df['clean_text'] = user_tweets_df['clean_text'].apply(lambda x: stopword.remove(x))
     user_tweets_df.replace("", float("NaN"), inplace=True)
     user_tweets_df = user_tweets_df.dropna()
-    user_tweets_df['text_token'] = user_tweets_df['clean_text'].apply(word_tokenize_wrapper)
+    user_tweets_df['text_token'] = user_tweets_df['clean_text'].apply(lambda x: word_tokenize(x))
 
     # ___Export Data___
-    user_tweets_df.to_csv('./data_clean/userProfile_{}.csv'.format(usernames[user]), sep=';', index=False)
+    user_tweets_df.to_json('./data_clean/userProfile_{}.json'.format(usernames[user]))
 
 print('\n' + '========================= SCRAPE USER PROFILE DONE =========================' + '\n')
 
@@ -132,10 +128,10 @@ for user in range(len(keywords)):
     mentions_tweets_df['clean_text'] = mentions_tweets_df['clean_text'].apply(lambda x: stopword.remove(x))
     mentions_tweets_df.replace("", float("NaN"), inplace=True)
     mentions_tweets_df = mentions_tweets_df.dropna()
-    mentions_tweets_df['text_token'] = mentions_tweets_df['clean_text'].apply(word_tokenize_wrapper)
+    mentions_tweets_df['text_token'] = mentions_tweets_df['clean_text'].apply(lambda x: word_tokenize(x))
 
     # ___Export Data___
-    mentions_tweets_df.to_csv('./data_clean/userMention_{}.csv'.format(keywords[user]), sep=';', index=False)
+    mentions_tweets_df.to_json('./data_clean/userMention_{}.json'.format(keywords[user]))
 
 print('\n' + '========================= SCRAPE USER MENTION DONE =========================' + '\n')
 
