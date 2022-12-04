@@ -9,16 +9,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Welcome</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo-iconn.png">
+    <title>About Us</title>
     <!-- Custom CSS -->
     <link href="assets/extra-libs/c3/c3.min.css" rel="stylesheet">
     <link href="assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <link href="assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
     <!-- Custom CSS -->
     <link href="dist/css/style.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -58,8 +56,9 @@
                         <a href="Welcome.html">
                             <b class="logo-icon">
                                 <!-- Dark Logo icon -->
-                                <img src="assets/images/logo-iconn.png" alt="homepage" class="dark-logo" style="height: 45px;"/>
+                                <img src="{{url_for('static', filename='assets'/images/logo-iconn.png)}}" alt="homepage" class="dark-logo" style="height: 45px;"/>
                                 <!-- Light Logo icon --> 
+                                <img src="assets/images/logo-icon.png" alt="homepage" class="light-logo" />
                             </b>
                             <!--End Logo icon -->
                             <!-- Logo text -->
@@ -67,6 +66,7 @@
                                 <!-- dark Logo text -->
                                 <img src="assets/images/logo-teks.png" alt="homepage" class="dark-logo" style="height: 45px;" />
                                 <!-- Light Logo text -->
+                                <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
                             </span>
                         </a>
                     </div>
@@ -96,17 +96,24 @@
                         <nav class="navbar navbar-expand-lg navbar-light">
                             <div class="container-fluid">
                                 <a class="navbar-brand" href="Infopedia Kandidat.html">Candidate</a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                              </button>
                             </div>
                             <div class="container-fluid">
                                 <a class="navbar-brand" href="Anies.html">Dashboard</a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                              </button>
                             </div>
                             <div class="container-fluid">
                                 <a class="navbar-brand" href="About Us.html">About Us</a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                              </button>
                             </div>
                         </nav>
                         <!-- Akhir Navbar Menu -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
                         <!-- ============================================================== -->
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
@@ -117,36 +124,120 @@
         </header>
     </div>
     <!-- End Sidebar scroll-->
-    <div class="page-wrapper" style="background-image:url(./assets/images/w1.png);background-position:center;">
-        <!-- Welcome-->
+    <!-- ============================================================== -->
+    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-7 align-self-center">
+                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Good Morning Jason!</h3>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb m-0 p-0">
+                                <li class="breadcrumb-item"><a href="index.html">Dashboard</a>
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+
         <!-- *************************************************************** -->
-        <div class="container-fluid ">
-            <div class="row " style="padding-top: 300px; ">
-                <div class="col-sm-8 col-md-7" style="margin: auto; ">
-                    <div class="card ">
-                        <div class="card-body ">
+        <!-- Start about us Charts Section (Pengenalan Tentang Kelompok kitaaa)-->
+        <!-- *************************************************************** -->
+        <div>
+            <center>
+                <h4 style="font-size:40px; color: black;"> <b>Meet Our Team</b></h4>
+            </center>
+        </div>
+        <div class="container-fluid">
+            <div class="col-sm-12 col-md-5" style="margin: auto;">
+                <div class="card">
+                    <div class="card-body">
+                        <center>
+                            <h4 class="card-title" style="font-size:25px;">
+                                Muhammad Alfian Pratama</h4>
+                            <img src="./assets/images/Alfian.png" width="230" height="40" class="figure-img img-fluid rounded" alt="Alya">
+                            <figcaption class="figure-caption">Backend Developer</figcaption>
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
                             <center>
-                                <h4 class=" card-title " style="font-size:50px; ">
-                                    Welcome to BicaraPilpres </h4>
-                                <br>
-                                <a type="button " class="btn btn-secondary " href="About Us.html ">About Us</a>
-                                <a type="button " class="btn btn-secondary " href="Infopedia Kandidat.html ">Get To Know Candidate</a>
-                                <a type="button " class="btn btn-secondary " href="Anies.html ">Dashboard</a>
+                                <h4 class="card-title" style="font-size:25px;">
+                                    Sabrina Tiara Bachtiar</h4>
+                                <img src="./assets/images/Sabrina.png" width="230" height="40" class="figure-img img-fluid rounded" alt="Sabrina">
+                                <figcaption class="figure-caption">Frontend Developer</figcaption>
+                            </center>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <center>
+                                <h4 class="card-title" style="font-size:25px;">
+                                    Najma Attaqiya Alya</h4>
+                                <img src="./assets/images/Foto Alya.jpg" width="230" height="40" class="figure-img img-fluid rounded" alt="Alya">
+                                <figcaption class="figure-caption">Frontend Developer</figcaption>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6" style="margin: auto;">
+                    <div class="card">
+                        <div class="card-body">
+                            <center>
+                                <h4 class="card-title" style="font-size:25px;">
+                                    Muhammad Hanif Sudibyo</h4>
+                                <img src="./assets/images/Hanif Birdong.jpeg" width="230" height="40" class="figure-img img-fluid rounded" alt="Alya">
+                                <figcaption class="figure-caption">Backend Developer</figcaption>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <center>
+                                <h4 class="card-title" style="font-size:25px;">
+                                    Ilham Ahmad Kamil</h4>
+                                <img src="./assets/images/Ilham.png" width="230" height="40" class="figure-img img-fluid rounded" alt="Alya">
+                                <figcaption class="figure-caption">Backend Developer</figcaption>
                             </center>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End Welcome Section -->
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- footer -->
         <!-- ============================================================== -->
-        <footer class="footer text-center text-muted " style="padding-top: 100px; ">
-            All Rights Reserved by Adminmart. Designed and Developed by <a href="https://wrappixel.com ">WrapPixel</a>.
+        <footer class="footer text-center text-muted">
+            All Rights Reserved by Adminmart. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
         </footer>
         <!-- ============================================================== -->
         <!-- End footer -->
@@ -163,25 +254,25 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="assets/libs/jquery/dist/jquery.min.js "></script>
-    <script src="assets/libs/popper.js/dist/umd/popper.min.js "></script>
-    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
+    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- apps -->
     <!-- apps -->
-    <script src="dist/js/app-style-switcher.js "></script>
-    <script src="dist/js/feather.min.js "></script>
-    <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js "></script>
-    <script src="dist/js/sidebarmenu.js "></script>
+    <script src="dist/js/app-style-switcher.js"></script>
+    <script src="dist/js/feather.min.js"></script>
+    <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
-    <script src="dist/js/custom.min.js "></script>
+    <script src="dist/js/custom.min.js"></script>
     <!--This page JavaScript -->
-    <script src="assets/extra-libs/c3/d3.min.js "></script>
-    <script src="assets/extra-libs/c3/c3.min.js "></script>
-    <script src="assets/libs/chartist/dist/chartist.min.js "></script>
-    <script src="assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js "></script>
-    <script src="assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js "></script>
-    <script src="assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js "></script>
-    <script src="dist/js/pages/dashboards/dashboard1.min.js "></script>
+    <script src="assets/extra-libs/c3/d3.min.js"></script>
+    <script src="assets/extra-libs/c3/c3.min.js"></script>
+    <script src="assets/libs/chartist/dist/chartist.min.js"></script>
+    <script src="assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="dist/js/pages/dashboards/dashboard1.min.js"></script>
 </body>
 
 </html>
