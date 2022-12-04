@@ -9,16 +9,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo-iconn.png">
-    <title>Agus Harimurti Yudhoyono</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='assets/icon/logo-iconn.png')}}">
+    <title>Ganjar Pranowo</title>
     <!-- Custom CSS -->
-    <link href="assets/extra-libs/c3/c3.min.css" rel="stylesheet">
-    <link href="assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link href="assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <link href="{{url_for('static', filename='assets/extra-libs/c3/c3.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css')}}" />
     <!-- Custom CSS -->
-    <link href="dist/css/style.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="{{url_for('static', filename='dist/css/style.min.css')}}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -55,20 +53,18 @@
                     <!-- ============================================================== -->
                     <div class="navbar-brand">
                         <!-- Logo icon -->
-                        <a href="Welcome.html">
+                        <a href="/">
                             <b class="logo-icon">
                                 <!-- Dark Logo icon -->
-                                <img src="assets/images/logo-iconn.png" alt="homepage" class="dark-logo" style="height: 45px;"/>
+                                <img src="{{url_for('static', filename='assets/icon/logo-iconn.png')}}" alt="homepage" class="dark-logo" style="height: 45px;"/>
                                 <!-- Light Logo icon --> 
-                                <img src="assets/images/logo-icon.png" alt="homepage" class="light-logo" />
                             </b>
                             <!--End Logo icon -->
                             <!-- Logo text -->
                             <span class="logo-text">
                                 <!-- dark Logo text -->
-                                <img src="assets/images/logo-teks.png" alt="homepage" class="dark-logo" style="height: 45px;" />
+                                <img src="{{url_for('static', filename='assets/icon/logo-teks.png')}}" alt="homepage" class="dark-logo" style="height: 45px;" />
                                 <!-- Light Logo text -->
-                                <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
                             </span>
                         </a>
                     </div>
@@ -97,19 +93,25 @@
                         <!-- Navbar Menu -->
                         <nav class="navbar navbar-expand-lg navbar-light">
                             <div class="container-fluid">
-                                <a class="navbar-brand" href="Infopedia Kandidat.html">Candidate</a>
+                                <a class="navbar-brand" href="/candidate">Candidate</a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                              </button>
                             </div>
                             <div class="container-fluid">
-                                <a class="navbar-brand" href="Anies.html">Dashboard</a>
+                                <a class="navbar-brand" href="/anies">Dashboard</a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                              </button>
                             </div>
                             <div class="container-fluid">
-                                <a class="navbar-brand" href="About Us.html">About Us</a>
-
+                                <a class="navbar-brand" href="/aboutus">About Us</a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                              </button>
                             </div>
                         </nav>
                         <!-- Akhir Navbar Menu -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
                         <!-- ============================================================== -->
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
@@ -327,25 +329,25 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="{{url_for('static', filename='assets/libs/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/libs/popper.js/dist/umd/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <!-- apps -->
     <!-- apps -->
-    <script src="dist/js/app-style-switcher.js"></script>
-    <script src="dist/js/feather.min.js"></script>
-    <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="dist/js/sidebarmenu.js"></script>
+    <script src="{{url_for('static', filename='dist/js/app-style-switcher.js')}}"></script>
+    <script src="{{url_for('static', filename='dist/js/feather.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='dist/js/sidebarmenu.js')}}"></script>
     <!--Custom JavaScript -->
-    <script src="dist/js/custom.min.js"></script>
+    <script src="{{url_for('static', filename='dist/js/custom.min.js')}}"></script>
     <!--This page JavaScript -->
-    <script src="assets/extra-libs/c3/d3.min.js"></script>
-    <script src="assets/extra-libs/c3/c3.min.js"></script>
-    <script src="assets/libs/chartist/dist/chartist.min.js"></script>
-    <script src="assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="dist/js/pages/dashboards/dashboard1.min.js"></script>
+    <script src="{{url_for('static', filename='assets/extra-libs/c3/d3.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/extra-libs/c3/c3.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/libs/chartist/dist/chartist.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js')}}"></script>
+    <script src="{{url_for('static', filename='dist/js/pages/dashboards/dashboard1.min.js')}}"></script>
 </body>
 
 </html>

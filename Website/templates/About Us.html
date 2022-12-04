@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='assets/icon/logo-iconn.png')}}">
-    <title>Welcome</title>
+    <title>About Us</title>
     <!-- Custom CSS -->
     <link href="{{url_for('static', filename='assets/extra-libs/c3/c3.min.css')}}" rel="stylesheet">
     <link href="{{url_for('static', filename='assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">
@@ -58,15 +58,14 @@
                         <a href="/">
                             <b class="logo-icon">
                                 <!-- Dark Logo icon -->
-                                <img src="{{ url_for('static', filename='assets/icon/logo-iconn.png') }}" alt="homepage" class="dark-logo" style="height: 45px;"/>
+                                <img src="{{url_for('static', filename='assets/icon/logo-iconn.png')}}" alt="homepage" class="dark-logo" style="height: 45px;"/>
                                 <!-- Light Logo icon --> 
-                                <img src="{{ url_for('static', filename='assets/icon/logo-icon.png') }}" alt="homepage" class="light-logo" />
                             </b>
                             <!--End Logo icon -->
                             <!-- Logo text -->
                             <span class="logo-text">
                                 <!-- dark Logo text -->
-                                <img src="{{url_for('static', filename='assets/icon/logo-text.png')}}" alt="homepage" class="dark-logo" style="height: 45px;" />
+                                <img src="{{url_for('static', filename='assets/icon/logo-teks.png')}}" alt="homepage" class="dark-logo" style="height: 45px;" />
                                 <!-- Light Logo text -->
                             </span>
                         </a>
@@ -140,8 +139,7 @@
                 <div class="col-7 align-self-center">
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb m-0 p-0">
-                                <li class="breadcrumb-item"><a href="/anies">Dashboard</a>
+                            <ol class="breadcrumb m-1 p-1">
                                 </li>
                             </ol>
                         </nav>
@@ -159,6 +157,8 @@
         <!-- *************************************************************** -->
         <!-- Start about us Charts Section (Pengenalan Tentang Kelompok kitaaa)-->
         <!-- *************************************************************** -->
+        <br>
+        <br>
         <div>
             <center>
                 <h4 style="font-size:40px; color: black;"> <b>Meet Our Team</b></h4>
@@ -171,7 +171,7 @@
                         <center>
                             <h4 class="card-title" style="font-size:25px;">
                                 Muhammad Alfian Pratama</h4>
-                            <img src="./assets/images/Alfian.png" width="230" height="40" class="figure-img img-fluid rounded" alt="Alya">
+                            <img src="{{url_for('static', filename='/assets/images/Alfian.png')}}" width="230" height="40" class="figure-img img-fluid rounded" alt="Alya">
                             <figcaption class="figure-caption">Backend Developer</figcaption>
                         </center>
                     </div>
@@ -184,7 +184,7 @@
                             <center>
                                 <h4 class="card-title" style="font-size:25px;">
                                     Sabrina Tiara Bachtiar</h4>
-                                <img src="./assets/images/Sabrina.png" width="230" height="40" class="figure-img img-fluid rounded" alt="Sabrina">
+                                <img src="{{url_for('static', filename='/assets/images/Sabrina.png')}}" width="230" height="40" class="figure-img img-fluid rounded" alt="Sabrina">
                                 <figcaption class="figure-caption">Frontend Developer</figcaption>
                             </center>
 
@@ -198,7 +198,7 @@
                             <center>
                                 <h4 class="card-title" style="font-size:25px;">
                                     Najma Attaqiya Alya</h4>
-                                <img src="./assets/images/Foto Alya.jpg" width="230" height="40" class="figure-img img-fluid rounded" alt="Alya">
+                                <img src="{{url_for('static', filename='/assets/images/Alya.jpg')}}" width="230" height="40" class="figure-img img-fluid rounded" alt="Alya">
                                 <figcaption class="figure-caption">Frontend Developer</figcaption>
                             </center>
                         </div>
@@ -210,7 +210,7 @@
                             <center>
                                 <h4 class="card-title" style="font-size:25px;">
                                     Muhammad Hanif Sudibyo</h4>
-                                <img src="./assets/images/Hanif Birdong.jpeg" width="230" height="40" class="figure-img img-fluid rounded" alt="Alya">
+                                <img src="{{url_for('static', filename='/assets/images/Hanif.jpeg')}}" width="230" height="40" class="figure-img img-fluid rounded" alt="Alya">
                                 <figcaption class="figure-caption">Backend Developer</figcaption>
                             </center>
                         </div>
@@ -222,7 +222,7 @@
                             <center>
                                 <h4 class="card-title" style="font-size:25px;">
                                     Ilham Ahmad Kamil</h4>
-                                <img src="./assets/images/Ilham.png" width="230" height="40" class="figure-img img-fluid rounded" alt="Alya">
+                                <img src="{{url_for('static', filename='/assets/images/Ilham.png')}}" width="230" height="40" class="figure-img img-fluid rounded" alt="Alya">
                                 <figcaption class="figure-caption">Backend Developer</figcaption>
                             </center>
                         </div>

@@ -9,16 +9,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo-iconn.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='assets/icon/logo-iconn.png')}}">
     <title>Ganjar Pranowo</title>
     <!-- Custom CSS -->
-    <link href="assets/extra-libs/c3/c3.min.css" rel="stylesheet">
-    <link href="assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link href="assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <link href="{{url_for('static', filename='assets/extra-libs/c3/c3.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css')}}" />
     <!-- Custom CSS -->
-    <link href="dist/css/style.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="{{url_for('static', filename='dist/css/style.min.css')}}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -324,26 +322,25 @@
     <!-- End Wrapper -->
     <!-- ============================================================== -->
     <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="{{url_for('static', filename='assets/libs/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/libs/popper.js/dist/umd/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <!-- apps -->
     <!-- apps -->
-    <script src="dist/js/app-style-switcher.js"></script>
-    <script src="dist/js/feather.min.js"></script>
-    <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="dist/js/sidebarmenu.js"></script>
+    <script src="{{url_for('static', filename='dist/js/app-style-switcher.js')}}"></script>
+    <script src="{{url_for('static', filename='dist/js/feather.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='dist/js/sidebarmenu.js')}}"></script>
     <!--Custom JavaScript -->
-    <script src="dist/js/custom.min.js"></script>
+    <script src="{{url_for('static', filename='dist/js/custom.min.js')}}"></script>
     <!--This page JavaScript -->
-    <script src="assets/extra-libs/c3/d3.min.js"></script>
-    <script src="assets/extra-libs/c3/c3.min.js"></script>
-    <script src="assets/libs/chartist/dist/chartist.min.js"></script>
-    <script src="assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="dist/js/pages/dashboards/dashboard1.min.js"></script>
+    <script src="{{url_for('static', filename='assets/extra-libs/c3/d3.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/extra-libs/c3/c3.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/libs/chartist/dist/chartist.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js')}}"></script>
+    <script src="{{url_for('static', filename='dist/js/pages/dashboards/dashboard1.min.js')}}"></script>
 </body>
 
 </html>

@@ -16,7 +16,7 @@ def AboutUs():
 
 @app.route('/candidate')
 def candidate():
-    return render_template('Infopedia Candidate.html')
+    return render_template('Infopedia Kandidat.html')
 @app.route('/anies')
 def anies():
     return render_template('Anies.html')
