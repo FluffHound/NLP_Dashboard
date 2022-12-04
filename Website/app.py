@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def welcome():
-    return render_template('Welcome.html')
+    return render_template('welcome.html')
 
 @app.route('/aboutus')
 def AboutUs():
@@ -20,7 +20,7 @@ def candidate():
 @app.route('/anies')
 def anies():
     return render_template('Anies.html')
-@app.route('/AHY')
+@app.route('/ahy')
 def ahy():
     return render_template('AHY.html')
 @app.route('/ganjar')
@@ -29,7 +29,7 @@ def ganjar():
 @app.route('/prabowo')
 def prabowo():
     return render_template('Prabowo.html')
-@app.route('/ridwank')
+@app.route('/ridwan')
 def rk():
     return render_template('Ridwan Kamil.html')
 
