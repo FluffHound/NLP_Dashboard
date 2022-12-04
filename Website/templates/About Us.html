@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='assets/icon/logo-iconn.png')}}">
+    <title>About Us</title>
+    <!-- Custom CSS -->
+    <link href="{{url_for('static', filename='assets/extra-libs/c3/c3.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css')}}" />
+    <!-- Custom CSS -->
+    <link href="{{url_for('static', filename='dist/css/style.min.css')}}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar" data-navbarbg="skin6">
+            <nav class="navbar top-navbar navbar-expand-md">
+                <div class="navbar-header" data-logobg="skin6">
+                    <!-- This is for the sidebar toggle which is visible on mobile only -->
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
+                            class="ti-menu ti-close"></i></a>
+                    <!-- ============================================================== -->
+                    <!-- Logo -->
+                    <!-- ============================================================== -->
+                    <div class="navbar-brand">
+                        <!-- Logo icon -->
+                        <a href="/">
+                            <b class="logo-icon">
+                                <!-- Dark Logo icon -->
+                                <img src="{{url_for('static', filename='assets/icon/logo-iconn.png')}}" alt="homepage" class="dark-logo" style="height: 45px;"/>
+                                <!-- Light Logo icon --> 
+                            </b>
+                            <!--End Logo icon -->
+                            <!-- Logo text -->
+                            <span class="logo-text">
+                                <!-- dark Logo text -->
+                                <img src="{{url_for('static', filename='assets/icon/logo-teks.png')}}" alt="homepage" class="dark-logo" style="height: 45px;" />
+                                <!-- Light Logo text -->
+                            </span>
+                        </a>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Logo -->
+                    <!-- ============================================================== -->
+                    <!-- Toggle which is visible on mobile only -->
+                    <!-- ============================================================== -->
+                    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i
+                            class="ti-more"></i></a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items (Membuat search disebelah kanan) -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- Right side toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav float-right">
+                        <!-- ============================================================== -->
+                        <!-- Navbar Menu -->
+                        <nav class="navbar navbar-expand-lg navbar-light">
+                            <div class="container-fluid">
+                                <a class="navbar-brand" href="/candidate">Candidate</a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                              </button>
+                            </div>
+                            <div class="container-fluid">
+                                <a class="navbar-brand" href="/anies">Dashboard</a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                              </button>
+                            </div>
+                            <div class="container-fluid">
+                                <a class="navbar-brand" href="/aboutus">About Us</a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                              </button>
+                            </div>
+                        </nav>
+                        <!-- Akhir Navbar Menu -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- User profile and search -->
+                        <!-- ============================================================== -->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    </div>
+    <!-- End Sidebar scroll-->
+    <!-- ============================================================== -->
+    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-7 align-self-center">
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb m-1 p-1">
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+
+        <!-- *************************************************************** -->
+        <!-- Start about us Charts Section (Pengenalan Tentang Kelompok kitaaa)-->
+        <!-- *************************************************************** -->
+        <br>
+        <br>
+        <div>
+            <center>
+                <h4 style="font-size:40px; color: black;"> <b>Meet Our Team</b></h4>
+            </center>
+        </div>
+        <div class="container-fluid">
+            <div class="col-sm-12 col-md-5" style="margin: auto;">
+                <div class="card">
+                    <div class="card-body">
+                        <center>
+                            <h4 class="card-title" style="font-size:25px;">
+                                Muhammad Alfian Pratama</h4>
+                            <img src="{{url_for('static', filename='/assets/images/Alfian.png')}}" width="230" height="40" class="figure-img img-fluid rounded" alt="Alya">
+                            <figcaption class="figure-caption">Backend Developer</figcaption>
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <center>
+                                <h4 class="card-title" style="font-size:25px;">
+                                    Sabrina Tiara Bachtiar</h4>
+                                <img src="{{url_for('static', filename='/assets/images/Sabrina.png')}}" width="230" height="40" class="figure-img img-fluid rounded" alt="Sabrina">
+                                <figcaption class="figure-caption">Frontend Developer</figcaption>
+                            </center>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <center>
+                                <h4 class="card-title" style="font-size:25px;">
+                                    Najma Attaqiya Alya</h4>
+                                <img src="{{url_for('static', filename='/assets/images/Alya.jpg')}}" width="230" height="40" class="figure-img img-fluid rounded" alt="Alya">
+                                <figcaption class="figure-caption">Frontend Developer</figcaption>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6" style="margin: auto;">
+                    <div class="card">
+                        <div class="card-body">
+                            <center>
+                                <h4 class="card-title" style="font-size:25px;">
+                                    Muhammad Hanif Sudibyo</h4>
+                                <img src="{{url_for('static', filename='/assets/images/Hanif.jpeg')}}" width="230" height="40" class="figure-img img-fluid rounded" alt="Alya">
+                                <figcaption class="figure-caption">Backend Developer</figcaption>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <center>
+                                <h4 class="card-title" style="font-size:25px;">
+                                    Ilham Ahmad Kamil</h4>
+                                <img src="{{url_for('static', filename='/assets/images/Ilham.png')}}" width="230" height="40" class="figure-img img-fluid rounded" alt="Alya">
+                                <figcaption class="figure-caption">Backend Developer</figcaption>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="{{url_for('static', filename='assets/libs/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/libs/popper.js/dist/umd/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <!-- apps -->
+    <!-- apps -->
+    <script src="{{url_for('static', filename='dist/js/app-style-switcher.js')}}"></script>
+    <script src="{{url_for('static', filename='dist/js/feather.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='dist/js/sidebarmenu.js')}}"></script>
+    <!--Custom JavaScript -->
+    <script src="{{url_for('static', filename='dist/js/custom.min.js')}}"></script>
+    <!--This page JavaScript -->
+    <script src="{{url_for('static', filename='assets/extra-libs/c3/d3.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/extra-libs/c3/c3.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/libs/chartist/dist/chartist.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js')}}"></script>
+    <script src="{{url_for('static', filename='dist/js/pages/dashboards/dashboard1.min.js')}}"></script>
+</body>
+
+</html>

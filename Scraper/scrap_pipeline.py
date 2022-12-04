@@ -39,11 +39,12 @@ stemmer = factory.create_stemmer()
 factory_stop = StopWordRemoverFactory()
 stopword = factory_stop.create_stop_word_remover()
 dictionary = StopWordRemoverFactory().get_stop_words()
+dictionary += ['yg', 'vs', 'cebong', 'utk', 'sy', 'jg', 'sbg', 'kpd', 'ttg', 'moga', 'lu', 'loe', 'doang', 'ak',
+                'si', 'gak', 'dgn', 'dlm']
 
 def removeStop(text):
     words = text.split(' ')
-    stopped_words = [word for word in words if not self.dictionary.contains(word)]
-
+    stopped_words = [word for word in words if not word in dictionary]
     return ' '.join(stopped_words)
 
 # ===========================
@@ -66,18 +67,18 @@ for user in range(len(hashtags)):
             break
         tweets_list.append([tweet.id, tweet.date, tweet.user.username, tweet.content])
 
-    tweets_df = pd.DataFrame(tweets_list, columns=['ID', 'Datetime', 'Username', 'Content'])
+    tweets_df = pd.DataFrame(tweets_list, columns=['id', 'dateTime', 'userName', 'content'])
 
     # ___Cleaning, Stemming, Remove Stopwords, Remove Blank Text, Tokenize___
-    tweets_df['clean_text'] = tweets_df['Content'].apply(lambda x: clean_text(x))
-    tweets_df['clean_text'] = tweets_df['clean_text'].apply(lambda x: stopword.remove(x))
+    tweets_df['clean_text'] = tweets_df['content'].apply(lambda x: clean_text(x))
+    tweets_df['clean_text'] = tweets_df['clean_text'].apply(lambda x: removeStop(x))
     tweets_df.replace("", float("NaN"), inplace=True) # Menghapus baris kosong setelah dihapus stopword
     tweets_df = tweets_df.dropna()
     tweets_df.reset_index(drop=True)
     tweets_df['clean_text_stem'] = tweets_df['clean_text'].apply(lambda x: stemmer.stem(x))
 
     # ___Export Data___
-    tweets_df.to_json('./data_clean/hashtag_{}.json'.format(hashtags[user]))
+    tweets_df.to_csv('./data_clean/hashtag_{}.csv'.format(hashtags[user]), index=False)
 
 print('\n' + '========================= SCRAPE HASHTAG DONE =========================' + '\n')
 
@@ -94,18 +95,18 @@ for user in range(len(usernames)):
             break
         user_profile_list.append([tweet.id, tweet.date, tweet.likeCount, tweet.content])
 
-    user_tweets_df = pd.DataFrame(user_profile_list, columns=['ID', 'Datetime', 'Likes', 'Content'])
+    user_tweets_df = pd.DataFrame(user_profile_list, columns=['id', 'dateTime', 'likes', 'content'])
 
 # ___Cleaning, Stemming, Remove Stopwords, Remove Blank Text, Tokenize___
-    user_tweets_df['clean_text'] = user_tweets_df['Content'].apply(lambda x: clean_text(x))
-    user_tweets_df['clean_text'] = user_tweets_df['clean_text'].apply(lambda x: stopword.remove(x))
+    user_tweets_df['clean_text'] = user_tweets_df['content'].apply(lambda x: clean_text(x))
+    user_tweets_df['clean_text'] = user_tweets_df['clean_text'].apply(lambda x: removeStop(x))
     user_tweets_df.replace("", float("NaN"), inplace=True) # Menghapus baris kosong setelah dihapus stopword
     user_tweets_df = user_tweets_df.dropna()
     user_tweets_df.reset_index(drop=True)
     user_tweets_df['clean_text_stem'] = user_tweets_df['clean_text'].apply(lambda x: stemmer.stem(x))
 
     # ___Export Data___
-    user_tweets_df.to_json('./data_clean/userProfile_{}.json'.format(usernames[user]))
+    user_tweets_df.to_csv('./data_clean/userProfile_{}.csv'.format(usernames[user]), index=False)
 
 print('\n' + '========================= SCRAPE USER PROFILE DONE =========================' + '\n')
 
@@ -122,18 +123,18 @@ for user in range(len(keywords)):
             break
         user_mention_list.append([tweet.id, tweet.date, tweet.user.username, tweet.content])
 
-    mentions_tweets_df = pd.DataFrame(user_mention_list, columns=['ID', 'Datetime', 'Username', 'Content'])
+    mentions_tweets_df = pd.DataFrame(user_mention_list, columns=['id', 'dateTime', 'userName', 'content'])
 
     # ___Cleaning, Stemming, Remove Stopwords, Remove Blank Text, Tokenize___
-    mentions_tweets_df['clean_text'] = mentions_tweets_df['Content'].apply(lambda x: clean_text(x))
-    mentions_tweets_df['clean_text'] = mentions_tweets_df['clean_text'].apply(lambda x: stopword.remove(x))
+    mentions_tweets_df['clean_text'] = mentions_tweets_df['content'].apply(lambda x: clean_text(x))
+    mentions_tweets_df['clean_text'] = mentions_tweets_df['clean_text'].apply(lambda x: removeStop(x))
     mentions_tweets_df.replace("", float("NaN"), inplace=True) # Menghapus baris kosong setelah dihapus stopword
     mentions_tweets_df = mentions_tweets_df.dropna()
     mentions_tweets_df.reset_index(drop=True)
     mentions_tweets_df['clean_text_stem'] = mentions_tweets_df['clean_text'].apply(lambda x: stemmer.stem(x))
 
     # ___Export Data___
-    mentions_tweets_df.to_json('./data_clean/userMention_{}.json'.format(keywords[user]))
+    mentions_tweets_df.to_csv('./data_clean/userMention_{}.csv'.format(keywords[user]), index=False)
 
 print('\n' + '========================= SCRAPE USER MENTION DONE =========================' + '\n')
 

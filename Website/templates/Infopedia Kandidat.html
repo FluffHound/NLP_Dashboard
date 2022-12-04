@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='assets/icon/logo-iconn.png')}}">
+    <title>Candidate</title>
+    <!-- Custom CSS -->
+    <link href="{{url_for('static', filename='assets/extra-libs/c3/c3.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css')}}" />
+    <!-- Custom CSS -->
+    <link href="{{url_for('static', filename='dist/css/style.min.css')}}" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar" data-navbarbg="skin6">
+            <nav class="navbar top-navbar navbar-expand-md">
+                <div class="navbar-header" data-logobg="skin6">
+                    <!-- This is for the sidebar toggle which is visible on mobile only -->
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
+                            class="ti-menu ti-close"></i></a>
+                    <!-- ============================================================== -->
+                    <!-- Logo -->
+                    <!-- ============================================================== -->
+                    <div class="navbar-brand">
+                        <!-- Logo icon -->
+                        <a href="/">
+                            <b class="logo-icon">
+                                <!-- Dark Logo icon -->
+                                <img src="{{url_for('static', filename='assets/icon/logo-iconn.png')}}" alt="homepage" class="dark-logo" style="height: 45px;"/>
+                                <!-- Light Logo icon --> 
+                            </b>
+                            <!--End Logo icon -->
+                            <!-- Logo text -->
+                            <span class="logo-text">
+                                <!-- dark Logo text -->
+                                <img src="{{url_for('static', filename='assets/icon/logo-teks.png')}}" alt="homepage" class="dark-logo" style="height: 45px;" />
+                                <!-- Light Logo text -->
+                            </span>
+                        </a>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Logo -->
+                    <!-- ============================================================== -->
+                    <!-- Toggle which is visible on mobile only -->
+                    <!-- ============================================================== -->
+                    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i
+                            class="ti-more"></i></a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items (Membuat search disebelah kanan) -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- Right side toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav float-right">
+                        <!-- ============================================================== -->
+                        <!-- Navbar Menu -->
+                        <nav class="navbar navbar-expand-lg navbar-light">
+                            <div class="container-fluid">
+                                <a class="navbar-brand" href="/candidate">Candidate</a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                              </button>
+                            </div>
+                            <div class="container-fluid">
+                                <a class="navbar-brand" href="/anies">Dashboard</a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                              </button>
+                            </div>
+                            <div class="container-fluid">
+                                <a class="navbar-brand" href="/aboutus">About Us</a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                              </button>
+                            </div>
+                        </nav>
+                        <!-- Akhir Navbar Menu -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- User profile and search -->
+                        <!-- ============================================================== -->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    </div>
+    <!-- End Sidebar scroll-->
+    <!-- ============================================================== -->
+    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-7 align-self-center">
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb m-0 p-0">
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col" style="color:black; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size: 30px;">
+                    <p align="center" style="font-size: 40px;"><b>Get to Know with Candidate</b></p>
+                </div>
+            </div>
+            <!-- *************************************************************** -->
+            <!-- Start Infopedia Calon Kandidat Section -->
+            <!-- *************************************************************** -->
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <center>
+                                <a type="button" class="btn btn-light" href="Ganjar.html" style="background-color:white;">
+                                    <img src="{{url_for('static', filename='./assets/images/Ganjar Pranowo.jpg')}}" width="170" height="9" class="figure-img img-fluid rounded" alt="Ganjar Pranowo">
+                                    <h4 class="card-title" style="font-size:18px;"> H. Ganjar Pranowo, S.H., M.I.P.</h4>
+                                </a>
+                            </center>
+                            <div>
+                                <p align="justify" style="color:black;"> H. Ganjar Pranowo, S.H., M.I.P. (lahir 28 Oktober 1968) adalah Gubernur Jawa Tengah dua periode yang menjabat sejak 23 Agustus 2013. Sebelumnya, ia merupakan anggota Dewan Perwakilan Rakyat dari Fraksi PDI Perjuangan periode
+                                    2004–2009 dan 2009–2013. Selain itu, Ganjar juga menjabat sebagai Ketua Umum Keluarga Alumni Universitas Gadjah Mada (Kagama) dua periode, yaitu 2014–2019 dan 2019-2024 sekaligus Ketua Umum Persatuan Radio TV Publik
+                                    Daerah Seluruh Indonesia (Persada.id).
+                                </p>
+                                <center>
+                                    <a href="https://id.wikipedia.org/wiki/Ganjar_Pranowo" class="stretched-link">Read More</a>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <center>
+                                <a type="button" class="btn btn-light" href="Prabowo.html" style="background-color:white;">
+                                    <img src="{{url_for('static', filename='./assets/images/Prabowo Subianto.jpg')}}" width="170" height="9" class="figure-img img-fluid rounded" alt="Ganjar Pranowo">
+                                    <h4 class="card-title" style="font-size:18px;"> H. Prabowo Subianto Djojohadikusumo</h4>
+                                </a>
+                            </center>
+                            <div>
+                                <p align="justify" style="color:black;"> Letnan Jenderal TNI (Purn.) H. Prabowo Subianto Djojohadikusumo (lahir 17 Oktober 1951) adalah seorang politisi, pengusaha, dan perwira tinggi militer Indonesia. Ia menempuh pendidikan dan jenjang karier militer selama
+                                    28 tahun sebelum berkecimpung dalam dunia bisnis, politik dan pemerintahan. Pada tanggal 23 Oktober 2019, Prabowo dilantik menjadi Menteri Pertahanan ke-26 Republik Indonesia dalam Kabinet Indonesia Maju untuk periode
+                                    2019 hingga 2024.
+                                </p>
+                                <center>
+                                    <a href="https://id.wikipedia.org/wiki/Prabowo_Subianto" class="stretched-link">Read More</a>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <center>
+                                <a type="button" class="btn btn-light" href="Anies.html" style="background-color:white;">
+                                    <img src="{{url_for('static', filename='./assets/images/Anies Baswedan.jpg')}}" width="170" height="9" class="figure-img img-fluid rounded" alt="Ganjar Pranowo">
+                                    <h4 class="card-title" style="font-size:18px;"> H. Anies Rasyid Baswedan, S.E., M.P.P., Ph.D.</h4>
+                                </a>
+                            </center>
+                            <div>
+                                <p align="justify" style="color:black;">H. Anies Rasyid Baswedan, S.E., M.P.P., Ph.D. (lahir 7 Mei 1969) adalah akademisi, aktivis sosial, dan politisi Indonesia. Setelah mengenyam pendidikan di bidang ilmu politik, Anies berkarier sebagai akademisi. Ia menjabat
+                                    sebagai Rektor Universitas Paramadina selama delapan tahun.Selain itu, ia dikenal sebagai pencetus Indonesia Mengajar, sebuah gerakan yang merekrut generasi muda Indonsia untuk sebagai mengajar di wilayah-wilayah terluar
+                                    Indonesia selama satu tahun. Kiprahnya di bidang pendidikan berlanjut ke ranah politik dengan bergabung dalam konvensi calon presiden yang diselenggarakan oleh Partai Demokrat pada tahun 2013.
+                                </p>
+                                <center>
+                                    <a href="https://id.wikipedia.org/wiki/Anies_Baswedan" class="stretched-link">Read More</a>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <center>
+                                <a type="button" class="btn btn-light" href="AHY.html" style="background-color:white;">
+                                    <img src="{{url_for('static', filename='./assets/images/Agus Harimurti Yudhoyono.png')}}" width="170" height="8" class="figure-img img-fluid rounded" alt="Ganjar Pranowo">
+                                    <h4 class="card-title" style="font-size:18px;">H. Agus Harimurti Yudhoyono, M.Sc., M.PA., M.A.</h4>
+                                </a>
+                            </center>
+                            <div>
+                                <p align="justify" style="color:black;"> Mayor Inf. (Purn.) H. Agus Harimurti Yudhoyono, M.Sc., M.PA., M.A.. (lahir 10 Agustus 1978), atau yang lebih akrab disapa AHY, adalah politikus dan mantan perwira militer Indonesia. Putra dari mantan presiden Susilo Bambang
+                                    Yudhoyono, ia menjabat Direktur Eksekutif The Yudhoyono Institute (TYI) dan pendiri AHY Foundation. Sebelumnya, ia berkarier sebagai militer profesional di Tentara Nasional Indonesia Angkatan Darat (TNI-AD) selama 16
+                                    tahun. AHY menjadi lulusan terbaik dari Akademi Militer tahun 2000 dan meraih penghargaan Presiden Republik Indonesia; Bintang Adi Makayasa.
+
+                                </p>
+                                <center>
+                                    <a href="https://id.wikipedia.org/wiki/Ganjar_Pranowo" class="stretched-link">Read More</a>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-5" style="margin:auto;">
+                    <div class="card">
+                        <div class="card-body">
+                            <center>
+                                <a type="button" class="btn btn-light" href="Ridwan Kamil.html" style="background-color:white;">
+                                    <img src="{{url_for('static', filename='./assets/images/Ridwan Kamil.png')}}" width="170" height="9" class="figure-img img-fluid rounded" alt="Ganjar Pranowo">
+                                    <h4 class="card-title" style="font-size:18px;">H. Mochamad Ridwan Kamil, S.T., M.U.D.</h4>
+                                </a>
+                            </center>
+                            <div>
+                                <p align="justify" style="color:black;"> Dr. (H.C.) H. Mochamad Ridwan Kamil, S.T., M.U.D. (lahir 4 Oktober 1971), dikenal dengan sapaan Kang Emil adalah seorang arsitek dan politisi Indonesia. Saat ini, dia menjabat sebagai Gubernur Jawa Barat sejak 2018. Ia
+                                    terpilih bersama Uu Ruzhanul Ulum pada Pilgub Jabar. Sebelumnya, Ridwan menduduki posisi Wali Kota Bandung. Ridwan memasuki dunia politik pada 2013 dengan mengajukan diri sebagai calon Wali Kota Bandung. Ia pun diusung
+                                    oleh Partai Gerakan Indonesia Raya dan Partai Keadilan Sejahtera.
+                                </p>
+                                <center>
+                                    <a href="https://id.wikipedia.org/wiki/Ridwan_Kamil" class="stretched-link">Read More</a>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <footer class="footer text-center text-muted">
+        All Rights Reserved by Adminmart. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
+    </footer>
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="{{url_for('static', filename='assets/libs/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/libs/popper.js/dist/umd/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <!-- apps -->
+    <!-- apps -->
+    <script src="{{url_for('static', filename='dist/js/app-style-switcher.js')}}"></script>
+    <script src="{{url_for('static', filename='dist/js/feather.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='dist/js/sidebarmenu.js')}}"></script>
+    <!--Custom JavaScript -->
+    <script src="{{url_for('static', filename='dist/js/custom.min.js')}}"></script>
+    <!--This page JavaScript -->
+    <script src="{{url_for('static', filename='assets/extra-libs/c3/d3.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/extra-libs/c3/c3.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/libs/chartist/dist/chartist.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js')}}"></script>
+    <script src="{{url_for('static', filename='dist/js/pages/dashboards/dashboard1.min.js')}}"></script>
+</body>
+
+</html>
