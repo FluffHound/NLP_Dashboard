@@ -1,4 +1,4 @@
-- Try more robust stemmer
+- Try more robust stemmer [NOT WORTH IT, SKIP]
 https://github.com/ariaghora/mpstemmer
 
-- Wordcloud export
+- Wordcloud export [DONE]
