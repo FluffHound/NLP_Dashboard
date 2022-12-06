@@ -59,7 +59,7 @@ factory_stop = StopWordRemoverFactory()
 stopword = factory_stop.create_stop_word_remover()
 dictionary = StopWordRemoverFactory().get_stop_words()
 dictionary += ['yg', 'vs', 'cebong', 'utk', 'sy', 'jg', 'sbg', 'kpd', 'ttg', 'moga', 'lu', 'loe', 'doang', 'ak',
-                'si', 'gak', 'dgn', 'dlm']
+                'si', 'gak', 'dgn', 'dlm', 'ga', 'lo']
 
 def removeStop(text):
     words = text.split(' ')
