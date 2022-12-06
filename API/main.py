@@ -2,8 +2,6 @@ from flask import Flask,request, jsonify, abort, send_file
 from flask_cors import CORS
 import json
 import pyrebase
-from SVR import *
-from sentiment import *
 from datetime import datetime, timedelta
 import investpy
 
