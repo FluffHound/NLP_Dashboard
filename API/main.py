@@ -14,7 +14,7 @@ CORS(app)
 
 @app.route('/')
 def home():
-    return '''<h1>Elevate API v1</h1>'''
+    return '''<h1>Bicara Pilpres API v1</h1>'''
 	
 
 @app.route('/api/datasentiment', methods=['POST'])
