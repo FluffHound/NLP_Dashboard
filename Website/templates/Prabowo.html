@@ -278,13 +278,22 @@
                             <center>
                                 <h4 class="card-title" style="font-size: 30px;"><b>WordCloud</b></h4>
                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                    <button type="button" class="btn btn-danger">Negatif</button>
-                                    <button type="button" class="btn btn-success">Positif</button>
-                                    <button type="button" class="btn btn-warning">All</button>
+                                    <button type="button" class="btn btn-danger" onclick="negatif() " id="btn ">Negatif</button>
+                                    <button type="button" class="btn btn-success" onclick="positif() " id="btn ">Positif</button>
+                                    <button type="button" class="btn btn-warning" onclick="netral() " id="btn ">All</button>
                                 </div>
                                 <br>
-                                <div>
-                                    <img src="{{url_for('static', filename='Wordcloud/Wordcloud_mention_prabowo.jpg')}}" class="figure-img img-fluid rounded" style="height:360px; width:700px;" alt="Alya ">
+                                <!-- <div>
+                                    <img src="{{url_for('static', filename='Wordcloud/Wordcloud_mention_ahy.jpg')}}" class="figure-img img-fluid rounded" style="width=400px;height=100px;" alt="Alya">
+                                </div> -->
+                                <div id="div_netral " class="figure-img img-fluid rounded" style="display: block;">
+                                    <img src="{{url_for('static', filename='assets/Wordcloud/ahy/wordcloud_mention_ahy_neu.jpg')}}" style="width:90%; height:90%" id="gambarNetral" alt=" ">
+                                </div>
+                                <div id="div_positif " class="figure-img img-fluid rounded" style="display: none;">
+                                    <img src="{{url_for('static', filename='assets/Wordcloud/ahy/wordcloud_mention_ahy_pos.jpg')}}" style="width:90%; height:90%" id="gambarPositif" alt=" ">
+                                </div>
+                                <div id="div_negatif " class="figure-img img-fluid rounded" style="display: none;">
+                                    <img src="{{url_for('static', filename='assets/Wordcloud/ahy/wordcloud_mention_ahy_neg.jpg')}}" style="width:90%; height:90%" id="gambarNegatif" alt=" ">
                                 </div>
                             </center>
                         </div>
@@ -321,7 +330,7 @@
                         <center>
                             <h4 class="card-title" style="font-size:30px;"><b>WordCloud</b></h4>
                             <h5 class="card-title" style="font-size:15px;">WordCloud from Prabowo Tweets</h5>
-                            <img src="{{url_for('static', filename='Wordcloud/Wordcloud_profile_prabowo.jpg')}}" class="figure-img img-fluid rounded" style="height:360px; width:700px;" alt="Alya ">
+                            <img src="{{url_for('static', filename='assets/Wordcloud/wordcloud_profile_prabowo.jpg')}}" class="figure-img img-fluid rounded" style="height:360px; width:700px;" alt="Alya ">
                         </center>
                     </div>
                 </div>
@@ -383,6 +392,72 @@
     <script src="{{url_for('static', filename='assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js')}}"></script>
     <script src="{{url_for('static', filename='assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js')}}"></script>
     <script src="{{url_for('static', filename='dist/js/pages/dashboards/dashboard1.min.js')}}"></script>
+    <script>
+        function netral() {
+            var x = document.getElementById("div_netral ");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            }
+            var y = document.getElementById("div_positif ");
+            if (y.style.display === "block") {
+                y.style.display = "none";
+            }
+            var z = document.getElementById("div_negatif ");
+            if (z.style.display === "block") {
+                z.style.display = "none";
+            }
+        }
+
+        function positif() {
+            var x = document.getElementById("div_netral ");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            }
+            var y = document.getElementById("div_positif ");
+            if (y.style.display === "none") {
+                y.style.display = "block";
+            }
+            var z = document.getElementById("div_negatif ");
+            if (z.style.display === "block") {
+                z.style.display = "none";
+            }
+        }
+
+        function negatif() {
+            var x = document.getElementById("div_netral ");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            }
+            var y = document.getElementById("div_positif ");
+            if (y.style.display === "block") {
+                y.style.display = "none";
+            }
+            var z = document.getElementById("div_negatif ");
+            if (z.style.display === "none") {
+                z.style.display = "block";
+            }
+        }
+
+        function gantiGambar(gantiGambar) {
+            if (gantiGambar === "T1") {
+                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_neu.jpg')}}";
+                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_pos.jpg')}}";
+                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_neg.jpg')}}";
+            } else if (gantiGambar === "T2") {
+                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/ganjar/wordcloud_mention_ganjar_neu.jpg')}}";
+                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/ganjar/wordcloud_mention_ganjar_pos.jpg')}}";
+                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/ganjar/wordcloud_mention_ganjar_neg.jpg')}}";
+            } else if (gantiGambar === "T3") {
+                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_neu.jpg')}}";
+                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_pos.jpg')}}";
+                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_neg.jpg')}}";
+            } else if (gantiGambar === "T4") {
+                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_neu.jpg')}}";
+                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_pos.jpg')}}";
+                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_neg.jpg')}}";
+            }
+        }
+    </script>
 </body>
 
 </html>
