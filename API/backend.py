@@ -138,7 +138,7 @@ def sentiment():
         print("Scraping Selesai!")
 
         df_gabungan = pd.concat([tweets_df, mentions_tweets_df], ignore_index=True)
-        df_gabungan['dateTime'] = df_gabungan['dateTime'].apply(lambda x: datetime.strptime(x, '%Y-%m-%d %H:%M:%S%z').replace(tzinfo=None)+timedelta(hours=7))
+        df_gabungan['dateTime'] = df_gabungan['dateTime'].apply(lambda x: x.replace(tzinfo=None)+timedelta(hours=7))
         df_gabungan = df_gabungan[df_gabungan['datetime'] >= (datetime.now()-timedelta(days=2))]
 
         print('================================================================================================')
@@ -212,6 +212,7 @@ def sentiment():
         
         db.collection('Hasil Sentiment').document(calon[user]).set(hasil)
         print("Data berhasil disimpan di database")
+
 def upload_blob(bucket_name, source_file_name, destination_blob_name):
     credentials = service_account.Credentials.from_service_account_file("project-nlp-9b41d-firebase-adminsdk-w4jxt-038c435e97.json")
     storage_client = storage.Client(credentials=credentials)
@@ -222,7 +223,7 @@ def upload_blob(bucket_name, source_file_name, destination_blob_name):
 
 def wordcloud():
     # ___Join list as 1 string, and save wordcloud image___
-    calon = ['anies','ahy','rk']
+    calon = ['ganjar','prabowo','anies','ahy','rk']
     for i in range(len(calon)):
         print('Processing {}....'.format(calon[i]))
         dbs = db.collection('Sentiment')
@@ -269,102 +270,121 @@ def wordcloud():
                 path = 'wordcloud/{}/wordcloud_mention_{}_{}_{}.jpg'.format(calon[i],calon[i], waktu[j], labels[branch])
                 plt.savefig(path)
                 upload_blob(firebase_admin.storage.bucket().name, path, path)
-                print("Wordcloud {} {} {} berhasil disimpan di database".format(calon[i], waktu[j], labels[branch]))
-            
-            
-        
-wordcloud()
+        dbs = db.collection('LDA')
+        doc = dbs.document(calon[i])
+        res = doc.get().to_dict()
+        df = pd.DataFrame(res)
+
+        text_content = list(df['clean_text_stem'])
+
+        text_string = ''
+        for elem in text_content:
+            text_string = ' '.join([text_string, str(elem)])
+
+        wordcloud = WordCloud(background_color='white', width=2000, height=1000, colormap='summer').generate(text_string)
+
+        # plot wordcloud
+        plt.figure(figsize=(25,15))
+        image = plt.imshow(wordcloud)
+
+        # Hapus nilai axis
+        plt.axis('off')
+        plt.tight_layout(pad=0)
+        path = 'wordcloud/{}/wordcloud_profile_{}.jpg'.format(calon[i],calon[i])
+        plt.savefig(path)
+        upload_blob(firebase_admin.storage.bucket().name, path, path)
+
+    print('\n' + '========================= WORDCLOUD DONE =========================' + '\n')
 
 def lda():
-    # # ======================================================================================
-    # # ====================================== Scraping ======================================
-    # # ======================================================================================
-    # print('======================================================================================')
-    # print('====================================== Scraping ======================================')
-    # print('======================================================================================')
-    # print('\n')
-    # # ___jumlah scrap___
-    # num_scrap = 1000
-    # print('Scraping', str(num_scrap), 'tweet data')
+    # ======================================================================================
+    # ====================================== Scraping ======================================
+    # ======================================================================================
+    print('======================================================================================')
+    print('====================================== Scraping ======================================')
+    print('======================================================================================')
+    print('\n')
+    # ___jumlah scrap___
+    num_scrap = 20
+    print('Scraping', str(num_scrap), 'tweet data')
     
-    # usernames = ['ganjarpranowo', 'prabowo', 'aniesbaswedan', 'AgusYudhoyono', 'ridwankamil']
-    # # =======================================
-    # # ===== Scrap User Profile's Tweets =====
-    # # =======================================
-    # for user in range(len(usernames)):
-    #     print('\n' + 'Scraping @' + usernames[user] + '...')
-    #     # ___User Profile scraper___
-    #     user_profile_list = []
+    usernames = ['ganjarpranowo', 'prabowo', 'aniesbaswedan', 'AgusYudhoyono', 'ridwankamil']
+    calon = ['ganjar','prabowo','anies','ahy','rk']
+    # =======================================
+    # ===== Scrap User Profile's Tweets =====
+    # =======================================
+    for user in range(len(usernames)):
+        print('\n' + 'Scraping @' + usernames[user] + '...')
+        # ___User Profile scraper___
+        user_profile_list = []
 
-    #     for i, tweet in enumerate(tqdm(sntwitter.TwitterUserScraper(usernames[user]).get_items())):
-    #         if i > num_scrap:
-    #             break
-    #         user_profile_list.append([tweet.id, tweet.date, tweet.likeCount, tweet.content])
+        for i, tweet in enumerate(tqdm(sntwitter.TwitterUserScraper(usernames[user]).get_items())):
+            if i > num_scrap:
+                break
+            user_profile_list.append([tweet.id, tweet.date, tweet.likeCount, tweet.content])
 
-    #     user_tweets_df = pd.DataFrame(user_profile_list, columns=['id', 'dateTime', 'likes', 'content'])
+        user_tweets_df = pd.DataFrame(user_profile_list, columns=['id', 'datetime', 'likes', 'content'])
 
-    # # ___Cleaning, Stemming, Remove Stopwords, Remove Blank Text, Tokenize___
-    #     user_tweets_df['clean_text'] = user_tweets_df['content'].apply(lambda x: clean_text(x))
-    #     user_tweets_df['clean_text'] = user_tweets_df['clean_text'].apply(lambda x: removeStop(x))
-    #     user_tweets_df['clean_text_stem'] = user_tweets_df['clean_text'].apply(lambda x: stemmer.stem(x))
-    #     user_tweets_df.replace("", float("NaN"), inplace=True) # Menghapus baris kosong setelah dihapus stopword
-    #     user_tweets_df = user_tweets_df.dropna()
-    #     user_tweets_df.reset_index(drop=True)
+    # ___Cleaning, Stemming, Remove Stopwords, Remove Blank Text, Tokenize___
+        user_tweets_df['clean_text'] = user_tweets_df['content'].apply(lambda x: clean_text(x))
+        user_tweets_df['clean_text'] = user_tweets_df['clean_text'].apply(lambda x: removeStop(x))
+        user_tweets_df['clean_text_stem'] = user_tweets_df['clean_text'].apply(lambda x: stemmer.stem(x))
+        user_tweets_df.replace("", float("NaN"), inplace=True) # Menghapus baris kosong setelah dihapus stopword
+        user_tweets_df = user_tweets_df.dropna()
+        user_tweets_df.reset_index(drop=True)
 
-
-    
-    dbs = db.collection('Sentiment')
-    doc = dbs.document(calon[i])
-    res = doc.get().to_dict()
-    df = pd.DataFrame(res)
+        user_tweets_df['datetime'] = user_tweets_df['datetime'].apply(lambda x: x.replace(tzinfo=None)+timedelta(hours=7))
+        user_tweets_df = user_tweets_df[user_tweets_df['datetime'] >= (datetime.now()-timedelta(days=2))]
+        print('\n' + '========================= SCRAPE USER PROFILE DONE =========================' + '\n')
 
 
+        dbs = db.collection('LDA')
+        doc = dbs.document(calon[user])
+        res = doc.get().to_dict()
+        df_res = pd.DataFrame(res)
+        df = pd.concat([df_res, user_tweets_df], ignore_index=True)
+        df = df.drop_duplicates()
+
+        data = {'id':list(df['id']),
+                'datetime':list(df['datetime']),
+                'likes':list(df['likes']),
+                'content':list(df['content']),
+                'clean_text':list(df['clean_text']),
+                'clean_text_stem':list(df['clean_text_stem'])}
+
+        db.collection('LDA').document(calon[user]).set(data)
+
+        print("Scrapping Done....")
+
+        print("Processing LDA")
+
+        print('=========================================================================================')
+        print('====================================== Topic Model ======================================')
+        print('=========================================================================================')
+        print('\n')
+
+        tfidf_vectorizer = TfidfVectorizer()
+            # ___apply TF-IDF___
+        dtm_tfidf = tfidf_vectorizer.fit_transform(list(df['clean_text_stem']))
+
+        # ___apply LDA___
+        lda_tfidf = LatentDirichletAllocation(n_components=10)
+        lda_tfidf.fit(dtm_tfidf)
+
+        # ___export HTML___
+
+        data = pyLDAvis.sklearn.prepare(lda_tfidf, dtm_tfidf, tfidf_vectorizer)
+        path = 'lda/lda_{}.html'.format(calon[user])
+        pyLDAvis.save_html(data, path)
+        upload_blob(firebase_admin.storage.bucket().name, path, path)
+lda()
 
 
+def main():
+    sentiment()
+    lda()
+    wordcloud()
 
-    print('\n' + '========================= SCRAPE USER PROFILE DONE =========================' + '\n')
-
-# def LDA(katakunci):
-#     sentiment = db.collection('LDA')
-#     doc = sentiment.document(katakunci)
-#     res = doc.get().to_dict()
-#     df = pd.DataFrame(res)
-#     df['datetime'] = df.datetime.apply(lambda x: x.date())
-
-#     day7 = df[(df['datetime'] >= (datetime.now()-timedelta(days=7)).date()) & (df['datetime'] < (datetime.now()).date())]
-#     day3 = df[(df['datetime'] >= (datetime.now()-timedelta(days=3)).date()) & (df['datetime'] < (datetime.now()).date())]
-#     now = df[(df['datetime'] == (datetime.now()).date())]
-
-
-# def wordcloud(katakunci):
-#     # Wordcloud Sentiment
-#     sentiment = db.collection('Sentiment')
-#     doc = sentiment.document(katakunci)
-#     res = doc.get().to_dict()
-#     df = pd.DataFrame(res)
-#     df['datetime'] = df.datetime.apply(lambda x: x.date())
-
-#     day7 = df[(df['datetime'] >= (datetime.now()-timedelta(days=7)).date()) & (df['datetime'] < (datetime.now()).date())]
-#     day3 = df[(df['datetime'] >= (datetime.now()-timedelta(days=3)).date()) & (df['datetime'] < (datetime.now()).date())]
-#     now = df[(df['datetime'] == (datetime.now()).date())]
-
-#     # Wordcloud LDA
-#     sentiment = db.collection('LDA')
-#     doc = sentiment.document(katakunci)
-#     res = doc.get().to_dict()
-#     df = pd.DataFrame(res)
-#     df['datetime'] = df.datetime.apply(lambda x: x.date())
-
-#     day7 = df[(df['datetime'] >= (datetime.now()-timedelta(days=7)).date()) & (df['datetime'] < (datetime.now()).date())]
-#     day3 = df[(df['datetime'] >= (datetime.now()-timedelta(days=3)).date()) & (df['datetime'] < (datetime.now()).date())]
-#     now = df[(df['datetime'] == (datetime.now()).date())]
-
-
-
-
-# hashtags = ['ganjarpranowofor2024', 'prabowo', 'AniesPresiden2024', 'AHY', 'RidwanKamil']
-# usernames = ['ganjarpranowo', 'prabowo', 'aniesbaswedan', 'AgusYudhoyono', 'ridwankamil']
-# keywords = ['@ganjarpranowo', '@prabowo', '@aniesbaswedan', '@AgusYudhoyono', '@ridwankamil']
 
 
 
