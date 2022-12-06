@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='assets/icon/logo-iconn.png')}}">
-    <title>Ganjar Pranowo</title>
+    <title>Ridwan Kamil</title>
     <!-- Custom CSS -->
     <link href="{{url_for('static', filename='assets/extra-libs/c3/c3.min.css')}}" rel="stylesheet">
     <link href="{{url_for('static', filename='assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">
@@ -277,28 +277,29 @@
                                 </div>
                                 <br>
                                 <div>
-                                    <img src="{{url_for('static', filename='./assets/images/WC All.png')}}" width="400" height="40" class="figure-img img-fluid rounded" alt="Alya">
+                                    <img src="{{url_for('static', filename='Wordcloud/Wordcloud_mention_anies.jpg')}}" class="figure-img img-fluid rounded" style="height:360px; width:700px;" alt="Alya ">
                                 </div>
                             </center>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col" style="color:black; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size: 30px;">
-                <p align="center" style="font-size: 23px;"><b>Apa yang sering Ridwan Kamil Bahas di Akun Twitternya?</b></p>
+            <div class="col " style="color:black; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size: 30px; ">
+                <p align="center " style="font-size: 23px; "><b>Apa yang sering Ridwan Kamil Bahas di Akun Twitternya?</b></p>
                 <center>
-                    <a class="tombol" href="https://twitter.com/ridwankamil"><i class="fab fa-twitter"style='color:#08b0e7;font-size: 35px;'></i></a>
+                    <a class="tombol " href="https://twitter.com/ridwankamil "><i class="fab fa-twitter "style='color:#08b0e7;font-size: 35px;'></i><a href="https://twitter.com/ridwankamil " class="stretched-link " style="font-size: 22px; ">@ridwankamil</a></a>
                 </center>
             </div>
         </div>
         <!-- Topic Modelling -->
-        <div class="row">
-            <div class="col-md-6 col-lg-6" style="margin:auto;">
-                <div class="card">
-                    <div class="card-body">
+        <div class="row ">
+            <div class="col-10 " style="margin:auto; ">
+                <div class="card ">
+                    <div class="card-body ">
                         <center>
-                            <h4 class="card-title mb-0" style="font-size: 30px; margin: auto;"><b>Topic Modelling</b></h4>
-                            <img src="{{url_for('static', filename='./assets/images/Topic Modelling.png')}}" width="400" height="400" class="figure-img img-fluid rounded" alt="Alya">
+                            <h4 class="card-title mb-0 " style="font-size: 30px; margin: auto; "><b>Topic Modelling</b></h4>
+                            <iframe src="{{url_for( 'static', filename='iframeTM/lda_ridwan.html' )}} " style="border:none;margin: auto; width:2000px ; height: 700px " title="Iframe Example "></iframe>
+                            <!-- <img src="{{url_for( 'static', filename='./assets/images/Topic Modelling.png' )}} " width="400 " height="400 " class="figure-img img-fluid rounded " alt="Alya "> -->
                         </center>
                     </div>
                 </div>
@@ -306,24 +307,24 @@
         </div>
     </div>
     <!-- WordCloud tweet kandidat -->
-    <div class="row">
-        <div class="col-sm-12 col-md-6">
-            <div class="card">
-                <div class="card-body">
+    <div class="row ">
+        <div class="col-sm-12 col-md-6 ">
+            <div class="card ">
+                <div class="card-body ">
                     <center>
-                        <h4 class="card-title" style="font-size:30px;"><b>WordCloud</b></h4>
-                        <h5 class="card-title" style="font-size:15px;">WordCloud from Ridwan Kamil Tweets</h5>
-                        <img src="{{url_for('static', filename='./assets/images/WC All.png')}}" width="400" height="40" class="figure-img img-fluid rounded" alt="Alya">
+                        <h4 class="card-title " style="font-size:30px; "><b>WordCloud</b></h4>
+                        <h5 class="card-title " style="font-size:15px; ">WordCloud from Ridwan Kamil Tweets</h5>
+                        <img src="{{url_for('static', filename='Wordcloud/Wordcloud_profile_anies.jpg')}}" class="figure-img img-fluid rounded" style="height:360px; width:700px;" alt="Alya ">
                     </center>
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-md-6">
-            <div class="card">
-                <div class="card-body">
+        <div class="col-sm-12 col-md-6 ">
+            <div class="card ">
+                <div class="card-body ">
                     <center>
-                        <h4 class="card-title" style="font-size: 30px;"><b>Recent Tweets</b></h4>
-                        <img src="{{url_for('static', filename='./assets/images/Recent Tweets.png')}}" width="400" height="40" class="figure-img img-fluid rounded" alt="Alya">
+                        <h4 class="card-title " style="font-size: 30px; "><b>Recent Tweets</b></h4>
+                        <img src="{{url_for( 'static', filename='./assets/images/Recent Tweets.png' )}} " width="400 " height="40 " class="figure-img img-fluid rounded " alt="Alya ">
 
                     </center>
                 </div>
@@ -349,25 +350,25 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="{{url_for('static', filename='assets/libs/jquery/dist/jquery.min.js')}}"></script>
-    <script src="{{url_for('static', filename='assets/libs/popper.js/dist/umd/popper.min.js')}}"></script>
-    <script src="{{url_for('static', filename='assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for( 'static', filename='assets/libs/jquery/dist/jquery.min.js' )}} "></script>
+    <script src="{{url_for( 'static', filename='assets/libs/popper.js/dist/umd/popper.min.js' )}} "></script>
+    <script src="{{url_for( 'static', filename='assets/libs/bootstrap/dist/js/bootstrap.min.js' )}} "></script>
     <!-- apps -->
     <!-- apps -->
-    <script src="{{url_for('static', filename='dist/js/app-style-switcher.js')}}"></script>
-    <script src="{{url_for('static', filename='dist/js/feather.min.js')}}"></script>
-    <script src="{{url_for('static', filename='assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')}}"></script>
-    <script src="{{url_for('static', filename='dist/js/sidebarmenu.js')}}"></script>
+    <script src="{{url_for( 'static', filename='dist/js/app-style-switcher.js' )}} "></script>
+    <script src="{{url_for( 'static', filename='dist/js/feather.min.js' )}} "></script>
+    <script src="{{url_for( 'static', filename='assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js' )}} "></script>
+    <script src="{{url_for( 'static', filename='dist/js/sidebarmenu.js' )}} "></script>
     <!--Custom JavaScript -->
-    <script src="{{url_for('static', filename='dist/js/custom.min.js')}}"></script>
+    <script src="{{url_for( 'static', filename='dist/js/custom.min.js' )}} "></script>
     <!--This page JavaScript -->
-    <script src="{{url_for('static', filename='assets/extra-libs/c3/d3.min.js')}}"></script>
-    <script src="{{url_for('static', filename='assets/extra-libs/c3/c3.min.js')}}"></script>
-    <script src="{{url_for('static', filename='assets/libs/chartist/dist/chartist.min.js')}}"></script>
-    <script src="{{url_for('static', filename='assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js')}}"></script>
-    <script src="{{url_for('static', filename='assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js')}}"></script>
-    <script src="{{url_for('static', filename='assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js')}}"></script>
-    <script src="{{url_for('static', filename='dist/js/pages/dashboards/dashboard1.min.js')}}"></script>
+    <script src="{{url_for( 'static', filename='assets/extra-libs/c3/d3.min.js' )}} "></script>
+    <script src="{{url_for( 'static', filename='assets/extra-libs/c3/c3.min.js' )}} "></script>
+    <script src="{{url_for( 'static', filename='assets/libs/chartist/dist/chartist.min.js' )}} "></script>
+    <script src="{{url_for( 'static', filename='assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js' )}} "></script>
+    <script src="{{url_for( 'static', filename='assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js' )}} "></script>
+    <script src="{{url_for( 'static', filename='assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js' )}} "></script>
+    <script src="{{url_for( 'static', filename='dist/js/pages/dashboards/dashboard1.min.js' )}} "></script>
 </body>
 
 </html>
