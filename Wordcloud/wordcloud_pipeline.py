@@ -48,7 +48,8 @@ for df in tqdm(range(len(df_names))):
     for elem in text_content:
         text_string = ' '.join([text_string, str(elem)])
 
-    wordcloud = WordCloud(background_color='white').generate(text_string)
+    # Negative colour
+    wordcloud = WordCloud(background_color='white', width=2000, height=1000, colormap='gist_heat').generate(text_string)
 
     # plot wordcloud
     plt.figure(figsize=(25,15))
@@ -56,8 +57,7 @@ for df in tqdm(range(len(df_names))):
 
     # Hapus nilai axis
     plt.axis('off')
-    # plt.show()
-    # plt.imsave('wordcloud_{}.jpg'.format(df[3:]), arr=image)
+    plt.tight_layout(pad=0)
     plt.savefig('./output/wordcloud_mention_{}.jpg'.format(df_string[df]))
 
 # ===============================
@@ -84,7 +84,7 @@ for df in tqdm(range(len(df_names))):
     for elem in text_content:
         text_string = ' '.join([text_string, str(elem)])
 
-    wordcloud = WordCloud(background_color='white').generate(text_string)
+    wordcloud = WordCloud(background_color='white', width=2000, height=1000, colormap='summer').generate(text_string)
 
     # plot wordcloud
     plt.figure(figsize=(25,15))
@@ -92,8 +92,7 @@ for df in tqdm(range(len(df_names))):
 
     # Hapus nilai axis
     plt.axis('off')
-    # plt.show()
-    # plt.imsave('wordcloud_{}.jpg'.format(df[3:]), arr=image)
+    plt.tight_layout(pad=0)
     plt.savefig('./output/wordcloud_profile_{}.jpg'.format(df_string[df]))
 
 print('\n'+ 'All wordcloud exported!')
