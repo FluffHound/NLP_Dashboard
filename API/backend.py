@@ -83,7 +83,7 @@ def sentiment():
     print('======================================================================================')
     print('\n')
     # ___jumlah scrap___
-    num_scrap = 1000
+    num_scrap = 500
     print('Scraping', str(num_scrap), 'tweet data')
 
     # ===========================
@@ -125,7 +125,7 @@ def sentiment():
                 break
             user_mention_list.append([tweet.id, tweet.date, tweet.user.username, tweet.content])
 
-        mentions_tweets_df = pd.DataFrame(user_mention_list, columns=['id', 'dateTime', 'userName', 'content'])
+        mentions_tweets_df = pd.DataFrame(user_mention_list, columns=['id', 'datetime', 'userName', 'content'])
 
         # ___Cleaning, Stemming, Remove Stopwords, Remove Blank Text, Tokenize___
         mentions_tweets_df['clean_text'] = mentions_tweets_df['content'].apply(lambda x: clean_text(x))
@@ -138,7 +138,7 @@ def sentiment():
         print("Scraping Selesai!")
 
         df_gabungan = pd.concat([tweets_df, mentions_tweets_df], ignore_index=True)
-        df_gabungan['dateTime'] = df_gabungan['dateTime'].apply(lambda x: x.replace(tzinfo=None)+timedelta(hours=7))
+        df_gabungan['datetime'] = df_gabungan['datetime'].apply(lambda x: x.replace(tzinfo=None)+timedelta(hours=7))
         df_gabungan = df_gabungan[df_gabungan['datetime'] >= (datetime.now()-timedelta(days=2))]
 
         print('================================================================================================')
@@ -164,7 +164,7 @@ def sentiment():
         # ======================
         # ===== Prediction =====
         # ======================
-        print('\n' + 'Processing {}....'.format(calon[i]))
+        print('\n' + 'Processing {}....'.format(calon[user]))
 
         label = []
 
@@ -197,6 +197,7 @@ def sentiment():
         print("Loading Data...")
         res = doc.get().to_dict()
         df_gabungan = pd.DataFrame(res)
+        df_gabungan['datetime'] = df_gabungan['datetime'].apply(lambda x: x.replace(tzinfo=None))
         print("Slicing...")
         d14 = df_gabungan[df_gabungan['datetime'] >= (datetime.now()-timedelta(days=14))]
         d7 = df_gabungan[df_gabungan['datetime'] >= (datetime.now()-timedelta(days=7))]

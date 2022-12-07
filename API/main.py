@@ -32,18 +32,10 @@ def req_data():
         if data['status'] != 'minta datanya dong':
             abort(400)
         else:
-            while True:
-                calon = data['calon']
-                dbs = db.collection('Hasil Sentiment')
-                doc = dbs.document(calon)
-                res = doc.get().to_dict()
-                datetime_object = res['All time']['last_update'].date()
-                tanggal = datetime.now().date()
-                if datetime_object < tanggal:
-                    main()
-                    continue
-                else:
-                    break
+            calon = data['calon']
+            dbs = db.collection('Hasil Sentiment')
+            doc = dbs.document(calon)
+            res = doc.get().to_dict()
             return jsonify(res),201
 
 @app.route('/api/LDA', methods=['POST'])
