@@ -377,7 +377,6 @@ def lda():
         path = 'lda/lda_{}.html'.format(calon[user])
         pyLDAvis.save_html(data, path)
         upload_blob(firebase_admin.storage.bucket().name, path, path)
-lda()
 
 
 def main():
