@@ -22,6 +22,13 @@ def candidate():
 @app.route('/anies')
 def anies():
     calon = 'anies'
+    ## Sentiment
+    r = requests.post(
+        "http://127.0.0.1:5000/api/sentiment",
+        json={"status": "minta datanya dong", "calon": calon},
+    )
+    data = r.json()
+    times = data['All time']['last_update']
     ## LDA
     r2 = requests.post(
             "http://127.0.0.1:5000/api/LDA",
@@ -44,7 +51,7 @@ def anies():
         json={"status": "minta datanya dong", "calon": calon},
     )
     save = open(f"static/assets/Wordcloud/{calon}/wordcloud_profile_{calon}.jpg", "wb").write(r4.content)
-    return render_template('Anies.html')
+    return render_template('Anies.html',time=times)
 @app.route('/ahy')
 def ahy():
     calon = 'ahy'

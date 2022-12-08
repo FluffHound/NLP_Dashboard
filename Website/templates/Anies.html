@@ -24,6 +24,7 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="plotly-2.16.1.min.js"></script>
     <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -220,7 +221,7 @@
             </div>
             <div class="row">
                 <p align="center">
-                    Terakhir diperbarui pada tanggal 20/11/2022 pada pukul 00.00
+                    Terakhir diperbarui pada {{time}}
                 </p>
             </div>
             <div class="row">
@@ -257,19 +258,26 @@
                         <div class="card-body">
                             <center>
                                 <h4 class="card-title" style="font-size:30px;"><b>Sentiment Analysis</b></h4>
-                                <div id="myDiv"></div>
+                                <div id="myDiv">
+                                </div>
                                 <script>
-                                    pie = document.getElementById('myDiv');
-                                    var data = [{
-                                        values: [19, 26, 55],
-                                        labels: ['Residential', 'Non-Residential', 'Utility'],
-                                        type: 'pie'
-                                    }];
-                                    var layout = {
-                                        height: 400,
-                                        width: 500
-                                    };
-                                    Plotly.newPlot(pie, data, layout);
+                                    axios({method: 'post',
+                                        url: 'http://127.0.0.1:5000/api/sentiment',
+                                        data:{status: "minta datanya dong", "calon": "anies"}
+                                    }).then(function (response) {
+                                        var alltime = response.data["All time"];
+                                        pie = document.getElementById('myDiv');
+                                        var data = [{
+                                            values: [alltime["positive"], alltime["neutral"], alltime["negative"]],
+                                            labels: ['Positif', 'Netral', 'Negatif'],
+                                            type: 'pie'
+                                        }];
+                                        var layout = {
+                                            height: 400,
+                                            width: 500
+                                        };
+                                        Plotly.newPlot(pie, data, layout);
+                                        });
                                 </script>
                             </center>
                         </div>
@@ -336,7 +344,7 @@
                     <center>
                         <h4 class="card-title" style="font-size:30px;"><b>WordCloud</b></h4>
                         <h5 class="card-title" style="font-size:15px;">WordCloud from Anies Baswedan Tweets</h5>
-                        <img src="{{url_for('static', filename='assets/Wordcloud/wordcloud_profile_anies.jpg')}}" class="figure-img img-fluid rounded" style="height:360px; width:700px;" alt="Alya ">
+                        <img src="{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_profile_anies.jpg')}}" class="figure-img img-fluid rounded" style="height:360px; width:700px;" alt="Alya ">
                     </center>
                 </div>
             </div>
@@ -446,21 +454,21 @@
 
         function gantiGambar(gantiGambar) {
             if (gantiGambar === "T1") {
-                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_neu.jpg')}}";
-                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_pos.jpg')}}";
-                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_neg.jpg')}}";
+                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_All time_neu.jpg')}}";
+                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_All time_pos.jpg')}}";
+                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_All time_neg.jpg')}}";
             } else if (gantiGambar === "T2") {
-                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/ganjar/wordcloud_mention_ganjar_neu.jpg')}}";
-                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/ganjar/wordcloud_mention_ganjar_pos.jpg')}}";
-                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/ganjar/wordcloud_mention_ganjar_neg.jpg')}}";
+                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/ganjar/wordcloud_mention_ganjar_All time_neu.jpg')}}";
+                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/ganjar/wordcloud_mention_ganjar_All time_pos.jpg')}}";
+                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/ganjar/wordcloud_mention_ganjar_All time_neg.jpg')}}";
             } else if (gantiGambar === "T3") {
-                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_neu.jpg')}}";
-                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_pos.jpg')}}";
-                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_neg.jpg')}}";
+                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_All time_neu.jpg')}}";
+                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_All time_pos.jpg')}}";
+                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_All time_neg.jpg')}}";
             } else if (gantiGambar === "T4") {
-                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_neu.jpg')}}";
-                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_pos.jpg')}}";
-                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_neg.jpg')}}";
+                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_All time_neu.jpg')}}";
+                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_All time_pos.jpg')}}";
+                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_All time_neg.jpg')}}";
             }
         }
     </script>

@@ -22,6 +22,7 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="plotly-2.16.1.min.js"></script>
     <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -257,17 +258,23 @@
                                 <h4 class="card-title" style="font-size:30px;"><b>Sentiment Analysis</b></h4>
                                 <div id="myDiv"></div>
                                 <script>
-                                    pie = document.getElementById('myDiv');
-                                    var data = [{
-                                        values: [19, 26, 55],
-                                        labels: ['Residential', 'Non-Residential', 'Utility'],
-                                        type: 'pie'
-                                    }];
-                                    var layout = {
-                                        height: 400,
-                                        width: 500
-                                    };
-                                    Plotly.newPlot(pie, data, layout);
+                                    axios({method: 'post',
+                                        url: 'http://127.0.0.1:5000/api/sentiment',
+                                        data:{status: "minta datanya dong", "calon": "ahy"}
+                                    }).then(function (response) {
+                                        var alltime = response.data["All time"];
+                                        pie = document.getElementById('myDiv');
+                                        var data = [{
+                                            values: [alltime["positive"], alltime["neutral"], alltime["negative"]],
+                                            labels: ['Positif', 'Netral', 'Negatif'],
+                                            type: 'pie'
+                                        }];
+                                        var layout = {
+                                            height: 400,
+                                            width: 500
+                                        };
+                                        Plotly.newPlot(pie, data, layout);
+                                        });
                                 </script>
                             </center>
                         </div>

@@ -3,15 +3,18 @@ from flask_cors import CORS
 import json
 
 import firebase_admin
-from firebase_admin import credentials, firestore
+from firebase_admin import credentials, firestore, storage
+
 from datetime import datetime, timedelta
 from backend import *
 
 ### Connect Database
-cred = credentials.Certificate("project-nlp-9b41d-firebase-adminsdk-w4jxt-038c435e97.json")
+### Connect Database
+cred = firebase_admin.credentials.Certificate("project-nlp-9b41d-firebase-adminsdk-w4jxt-038c435e97.json")
 firebase_admin.initialize_app(cred,{
     'storageBucket': 'project-nlp-9b41d.appspot.com'},name='bicarapilpres')
 db = firestore.client()  # this connects to our Firestore database
+
 
 
 app = Flask(__name__)
@@ -32,10 +35,18 @@ def req_data():
         if data['status'] != 'minta datanya dong':
             abort(400)
         else:
-            calon = data['calon']
-            dbs = db.collection('Hasil Sentiment')
-            doc = dbs.document(calon)
-            res = doc.get().to_dict()
+            while True:
+                calon = data['calon']
+                dbs = db.collection('Hasil Sentiment')
+                doc = dbs.document(calon)
+                res = doc.get().to_dict()
+                tanggal = res['All time']['last_update'].date()
+                date_obj = datetime.now().date()
+                if tanggal < date_obj:
+                    main()
+                    continue
+                else:
+                    break
             return jsonify(res),201
 
 @app.route('/api/LDA', methods=['POST'])

@@ -35,6 +35,7 @@ cred = credentials.Certificate("project-nlp-9b41d-firebase-adminsdk-w4jxt-038c43
 firebase_admin.initialize_app(cred,{
     'storageBucket': 'project-nlp-9b41d.appspot.com'})
 db = firestore.client()  # this connects to our Firestore database
+credentials = service_account.Credentials.from_service_account_file("project-nlp-9b41d-firebase-adminsdk-w4jxt-038c435e97.json")
 
 # ===============================
 # ===== Preprocess Function =====
@@ -83,8 +84,10 @@ def sentiment():
     print('======================================================================================')
     print('\n')
     # ___jumlah scrap___
-    num_scrap = 500
-    print('Scraping', str(num_scrap), 'tweet data')
+    hash_num_scrap = 500
+    men_num_scrap = 1000
+    print('Scraping', str(hash_num_scrap), 'hashtag tweet data')
+    print('Scraping', str(men_num_scrap), 'hashtag tweet data')
 
     # ===========================
     # ===== Things to Query =====
@@ -102,13 +105,14 @@ def sentiment():
         tweets_list = []
 
         for i, tweet in enumerate(tqdm(sntwitter.TwitterHashtagScraper(hashtags[user]).get_items())):
-            if i > num_scrap:
+            if i > hash_num_scrap:
                 break
             tweets_list.append([tweet.id, tweet.date, tweet.user.username, tweet.content])
 
         tweets_df = pd.DataFrame(tweets_list, columns=['id', 'datetime', 'username', 'content'])
 
         # ___Cleaning, Stemming, Remove Stopwords, Remove Blank Text, Tokenize___
+        print("Cleaning Process...")
         tweets_df['clean_text'] = tweets_df['content'].apply(lambda x: clean_text(x))
         tweets_df['clean_text'] = tweets_df['clean_text'].apply(lambda x: removeStop(x))
         tweets_df['clean_text_stem'] = tweets_df['clean_text'].apply(lambda x: stemmer.stem(x))
@@ -121,13 +125,14 @@ def sentiment():
         user_mention_list = []
 
         for i, tweet in enumerate(tqdm(sntwitter.TwitterSearchScraper(keywords[user]).get_items())):
-            if i > num_scrap:
+            if i > men_num_scrap:
                 break
             user_mention_list.append([tweet.id, tweet.date, tweet.user.username, tweet.content])
 
         mentions_tweets_df = pd.DataFrame(user_mention_list, columns=['id', 'datetime', 'userName', 'content'])
 
         # ___Cleaning, Stemming, Remove Stopwords, Remove Blank Text, Tokenize___
+        print("Cleaning Process...")
         mentions_tweets_df['clean_text'] = mentions_tweets_df['content'].apply(lambda x: clean_text(x))
         mentions_tweets_df['clean_text'] = mentions_tweets_df['clean_text'].apply(lambda x: removeStop(x))
         mentions_tweets_df['clean_text_stem'] = mentions_tweets_df['clean_text'].apply(lambda x: stemmer.stem(x))
@@ -175,28 +180,20 @@ def sentiment():
 
         df_gabungan['label'] = label
 
-        dbs = db.collection('Sentiment')
-        doc = dbs.document(calon[user])
-        res = doc.get().to_dict()
-        df_res = pd.DataFrame(res)
+        path = f'database/sentiment_{calon[user]}.json'
+        storage.Client(credentials=credentials).bucket(firebase_admin.storage.bucket().name).blob(path).download_to_filename(path)
+        df_res = pd.read_json(path,orient='columns')
 
         df = pd.concat([df_res, df_gabungan], ignore_index=True)
         df = df.drop_duplicates()
-
-        data = {'id':list(df['id']),
-                  'datetime':list(df['datetime']),
-                  'username':list(df['username']),
-                  'content':list(df['content']),
-                  'clean_text':list(df['clean_text']),
-                  'clean_text_stem':list(df['clean_text_stem']),
-                  'label':list(df['label'])}
+        df.to_json(path,orient='columns')
         
-        db.collection('Sentiment').document(calon[user]).set(data)
+        upload_blob(firebase_admin.storage.bucket().name, path, path)
         print("Data berhasil disimpan di database")
 
         print("Loading Data...")
-        res = doc.get().to_dict()
-        df_gabungan = pd.DataFrame(res)
+        storage.Client(credentials=credentials).bucket(firebase_admin.storage.bucket().name).blob(path).download_to_filename(path)
+        df_gabungan = pd.read_json(path,orient='columns')
         df_gabungan['datetime'] = df_gabungan['datetime'].apply(lambda x: x.replace(tzinfo=None))
         print("Slicing...")
         d14 = df_gabungan[df_gabungan['datetime'] >= (datetime.now()-timedelta(days=14))]
@@ -209,7 +206,7 @@ def sentiment():
         for j in range(len(waktu)):
             sen = df_name[j]['label'].value_counts().to_dict()
             hasil[waktu[j]] = sen
-            hasil[waktu[j]]['last_update'] = datetime.now(tz=None)
+            hasil[waktu[j]]['last_update'] = datetime.now()
         
         db.collection('Hasil Sentiment').document(calon[user]).set(hasil)
         print("Data berhasil disimpan di database")
@@ -227,10 +224,9 @@ def wordcloud():
     calon = ['ganjar','prabowo','anies','ahy','rk']
     for i in range(len(calon)):
         print('Processing {}....'.format(calon[i]))
-        dbs = db.collection('Sentiment')
-        doc = dbs.document(calon[i])
-        res = doc.get().to_dict()
-        df = pd.DataFrame(res)
+        path = f'database/sentiment_{calon[i]}.json'
+        storage.Client(credentials=credentials).bucket(firebase_admin.storage.bucket().name).blob(path).download_to_filename(path)
+        df = pd.read_json(path,orient='columns')
         df['datetime'] = df['datetime'].apply(lambda x:x.replace(tzinfo=None))
         d14 = df[df['datetime'] >= (datetime.now()-timedelta(days=14))]
         d7 = df[df['datetime'] >= (datetime.now()-timedelta(days=7))]
@@ -271,10 +267,9 @@ def wordcloud():
                 path = 'wordcloud/{}/wordcloud_mention_{}_{}_{}.jpg'.format(calon[i],calon[i], waktu[j], labels[branch])
                 plt.savefig(path)
                 upload_blob(firebase_admin.storage.bucket().name, path, path)
-        dbs = db.collection('LDA')
-        doc = dbs.document(calon[i])
-        res = doc.get().to_dict()
-        df = pd.DataFrame(res)
+        path = f'database/profile_{calon[i]}.json'
+        storage.Client(credentials=credentials).bucket(firebase_admin.storage.bucket().name).blob(path).download_to_filename(path)
+        df = pd.read_json(path,orient='columns')
 
         text_content = list(df['clean_text_stem'])
 
@@ -327,6 +322,7 @@ def lda():
         user_tweets_df = pd.DataFrame(user_profile_list, columns=['id', 'datetime', 'likes', 'content'])
 
     # ___Cleaning, Stemming, Remove Stopwords, Remove Blank Text, Tokenize___
+        print("Cleaning data...\n")
         user_tweets_df['clean_text'] = user_tweets_df['content'].apply(lambda x: clean_text(x))
         user_tweets_df['clean_text'] = user_tweets_df['clean_text'].apply(lambda x: removeStop(x))
         user_tweets_df['clean_text_stem'] = user_tweets_df['clean_text'].apply(lambda x: stemmer.stem(x))
@@ -338,22 +334,14 @@ def lda():
         user_tweets_df = user_tweets_df[user_tweets_df['datetime'] >= (datetime.now()-timedelta(days=2))]
         print('\n' + '========================= SCRAPE USER PROFILE DONE =========================' + '\n')
 
-
-        dbs = db.collection('LDA')
-        doc = dbs.document(calon[user])
-        res = doc.get().to_dict()
-        df_res = pd.DataFrame(res)
+        path = f'database/profile_{calon[user]}.json'
+        storage.Client(credentials=credentials).bucket(firebase_admin.storage.bucket().name).blob(path).download_to_filename(path)
+        df_res = pd.read_json(path,orient='columns')
         df = pd.concat([df_res, user_tweets_df], ignore_index=True)
         df = df.drop_duplicates()
 
-        data = {'id':list(df['id']),
-                'datetime':list(df['datetime']),
-                'likes':list(df['likes']),
-                'content':list(df['content']),
-                'clean_text':list(df['clean_text']),
-                'clean_text_stem':list(df['clean_text_stem'])}
-
-        db.collection('LDA').document(calon[user]).set(data)
+        df.to_json(path,orient='columns')
+        upload_blob(firebase_admin.storage.bucket().name, path, path)
 
         print("Scrapping Done....")
 
@@ -384,8 +372,6 @@ def main():
     sentiment()
     lda()
     wordcloud()
-
-
 
 
     
