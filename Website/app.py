@@ -42,7 +42,7 @@ def anies():
     for i in waktu:
         for j in sent:
             r3 = requests.post(
-            "http://127.0.0.1:5000/api/wordcloud", json={"status": "minta datanya dong", "calon": calon,'waktu':i,'sentiment':j},)
+            "http://127.0.0.1:5000/api/wordcloudsent", json={"status": "minta datanya dong", "calon": calon,'waktu':i,'sentiment':j},)
             save = open(f"static/assets/Wordcloud/{calon}/wordcloud_mention_{calon}_{i}_{j}.jpg", "wb").write(r3.content)
     
     ## Wordcloud Profile
@@ -68,7 +68,7 @@ def ahy():
     for i in waktu:
         for j in sent:
             r3 = requests.post(
-            "http://127.0.0.1:5000/api/wordcloud", json={"status": "minta datanya dong", "calon": calon,'waktu':i,'sentiment':j},)
+            "http://127.0.0.1:5000/api/wordcloudsent", json={"status": "minta datanya dong", "calon": calon,'waktu':i,'sentiment':j},)
             save = open(f"static/assets/Wordcloud/{calon}/wordcloud_mention_{calon}_{i}_{j}.jpg", "wb").write(r3.content)
     
     ## Wordcloud Profile
@@ -94,7 +94,7 @@ def ganjar():
     for i in waktu:
         for j in sent:
             r3 = requests.post(
-            "http://127.0.0.1:5000/api/wordcloud", json={"status": "minta datanya dong", "calon": calon,'waktu':i,'sentiment':j},)
+            "http://127.0.0.1:5000/api/wordcloudsent", json={"status": "minta datanya dong", "calon": calon,'waktu':i,'sentiment':j},)
             save = open(f"static/assets/Wordcloud/{calon}/wordcloud_mention_{calon}_{i}_{j}.jpg", "wb").write(r3.content)
     
     ## Wordcloud Profile
@@ -120,7 +120,7 @@ def prabowo():
     for i in waktu:
         for j in sent:
             r3 = requests.post(
-            "http://127.0.0.1:5000/api/wordcloud", json={"status": "minta datanya dong", "calon": calon,'waktu':i,'sentiment':j},)
+            "http://127.0.0.1:5000/api/wordcloudsent", json={"status": "minta datanya dong", "calon": calon,'waktu':i,'sentiment':j},)
             save = open(f"static/assets/Wordcloud/{calon}/wordcloud_mention_{calon}_{i}_{j}.jpg", "wb").write(r3.content)
     
     ## Wordcloud Profile
@@ -146,7 +146,7 @@ def rk():
     for i in waktu:
         for j in sent:
             r3 = requests.post(
-            "http://127.0.0.1:5000/api/wordcloud", json={"status": "minta datanya dong", "calon": calon,'waktu':i,'sentiment':j},)
+            "http://127.0.0.1:5000/api/wordcloudsent", json={"status": "minta datanya dong", "calon": calon,'waktu':i,'sentiment':j},)
             save = open(f"static/assets/Wordcloud/{calon}/wordcloud_mention_{calon}_{i}_{j}.jpg", "wb").write(r3.content)
     
     ## Wordcloud Profile
