@@ -9,7 +9,6 @@ from datetime import datetime, timedelta
 from backend import *
 
 ### Connect Database
-### Connect Database
 cred = firebase_admin.credentials.Certificate("project-nlp-9b41d-firebase-adminsdk-w4jxt-038c435e97.json")
 firebase_admin.initialize_app(cred,{
     'storageBucket': 'project-nlp-9b41d.appspot.com'},name='bicarapilpres')
@@ -35,18 +34,10 @@ def req_data():
         if data['status'] != 'minta datanya dong':
             abort(400)
         else:
-            while True:
-                calon = data['calon']
-                dbs = db.collection('Hasil Sentiment')
-                doc = dbs.document(calon)
-                res = doc.get().to_dict()
-                tanggal = res['All time']['last_update'].date()
-                date_obj = datetime.now().date()
-                if tanggal < date_obj:
-                    main()
-                    continue
-                else:
-                    break
+            calon = data['calon']
+            dbs = db.collection('Hasil Sentiment')
+            doc = dbs.document(calon)
+            res = doc.get().to_dict()
             return jsonify(res),201
 
 @app.route('/api/LDA', methods=['POST'])
