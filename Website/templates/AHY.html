@@ -256,7 +256,14 @@
                         <div class="card-body">
                             <center>
                                 <h4 class="card-title" style="font-size:30px;"><b>Sentiment Analysis</b></h4>
-                                <div id="myDiv"></div>
+                                <div id="myDiv" style="display: block;">
+                                </div>
+                                <div id="myDiv2" style="display: none;">
+                                </div>
+                                <div id="myDiv3" style="display: none;">
+                                </div>
+                                <div id="myDiv4" style="display: none;">
+                                </div>
                                 <script>
                                     axios({
                                         method: 'post',
@@ -274,10 +281,49 @@
                                             type: 'pie'
                                         }];
                                         var layout = {
-                                            height: 400,
+                                            height: 420,
                                             width: 500
                                         };
                                         Plotly.newPlot(pie, data, layout);
+
+                                        var hari14 = response.data["14 Hari"];
+                                        pie2 = document.getElementById('myDiv2');
+                                        var data2 = [{
+                                            values: [hari14["positive"], hari14["neutral"], hari14["negative"]],
+                                            labels: ['Positif', 'Netral', 'Negatif'],
+                                            type: 'pie'
+                                        }];
+                                        var layout = {
+                                            height: 420,
+                                            width: 500
+                                        };
+                                        Plotly.newPlot(pie2, data2, layout);
+
+                                        var hari7 = response.data["7 Hari"];
+                                        pie3 = document.getElementById('myDiv3');
+                                        var data3 = [{
+                                            values: [hari7["positive"], hari7["neutral"], hari7["negative"]],
+                                            labels: ['Positif', 'Netral', 'Negatif'],
+                                            type: 'pie'
+                                        }];
+                                        var layout = {
+                                            height: 420,
+                                            width: 500
+                                        };
+                                        Plotly.newPlot(pie3, data3, layout);
+
+                                        var now = response.data["Hari ini"];
+                                        pie4 = document.getElementById('myDiv4');
+                                        var data4 = [{
+                                            values: [now["positive"], now["neutral"], now["negative"]],
+                                            labels: ['Positif', 'Netral', 'Negatif'],
+                                            type: 'pie'
+                                        }];
+                                        var layout = {
+                                            height: 420,
+                                            width: 500
+                                        };
+                                        Plotly.newPlot(pie4, data4, layout);
                                     });
                                 </script>
                             </center>
@@ -456,18 +502,82 @@
                 document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/ahy/wordcloud_mention_ahy_neu.jpg')}}";
                 document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/ahy/wordcloud_mention_ahy_pos.jpg')}}";
                 document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/ahy/wordcloud_mention_ahy_neg.jpg')}}";
+                var x = document.getElementById("myDiv");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                }
+                var y = document.getElementById("myDiv2");
+                if (y.style.display === "block") {
+                    y.style.display = "none";
+                }
+                var z = document.getElementById("myDiv3");
+                if (z.style.display === "block") {
+                    z.style.display = "none";
+                }
+                var za = document.getElementById("myDiv4");
+                if (za.style.display === "block") {
+                    za.style.display = "none";
+                }
             } else if (gantiGambar === "T2") {
                 document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/ahy/wordcloud_mention_ahy_14 Hari_neu.jpg')}}";
                 document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/ahy/wordcloud_mention_ahy_14 Hari_pos.jpg')}}";
                 document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/ahy/wordcloud_mention_ahy_14 Hari_neg.jpg')}}";
+                var x = document.getElementById("myDiv");
+                if (x.style.display === "block") {
+                    x.style.display = "none";
+                }
+                var y = document.getElementById("myDiv2");
+                if (y.style.display === "none") {
+                    y.style.display = "block";
+                }
+                var z = document.getElementById("myDiv3");
+                if (z.style.display === "block") {
+                    z.style.display = "none";
+                }
+                var za = document.getElementById("myDiv4");
+                if (za.style.display === "block") {
+                    za.style.display = "none";
+                }
             } else if (gantiGambar === "T3") {
                 document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/ahy/wordcloud_mention_ahy_7 Hari_neu.jpg')}}";
                 document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/ahy/wordcloud_mention_ahy_7 Hari_pos.jpg')}}";
                 document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/ahy/wordcloud_mention_ahy_7 Hari_neg.jpg')}}";
+                var x = document.getElementById("MyDiv");
+                if (x.style.display === "block") {
+                    x.style.display = "none";
+                }
+                var y = document.getElementById("myDiv2");
+                if (y.style.display === "block") {
+                    y.style.display = "none";
+                }
+                var z = document.getElementById("myDiv3");
+                if (z.style.display === "none") {
+                    z.style.display = "block";
+                }
+                var za = document.getElementById("myDiv4");
+                if (za.style.display === "block") {
+                    za.style.display = "none";
+                }
             } else if (gantiGambar === "T4") {
                 document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/ahy/wordcloud_mention_ahy_Hari ini_neu.jpg')}}";
                 document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/ahy/wordcloud_mention_ahy_Hari ini_pos.jpg')}}";
                 document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/ahy/wordcloud_mention_ahy_Hari ini_neg.jpg')}}";
+                var x = document.getElementById("myDiv");
+                if (x.style.display === "block") {
+                    x.style.display = "none";
+                }
+                var y = document.getElementById("myDiv2");
+                if (y.style.display === "block") {
+                    y.style.display = "none";
+                }
+                var z = document.getElementById("myDiv3");
+                if (z.style.display === "block") {
+                    z.style.display = "none";
+                }
+                var za = document.getElementById("myDiv4");
+                if (za.style.display === "none") {
+                    za.style.display = "block";
+                }
             }
         }
     </script>
