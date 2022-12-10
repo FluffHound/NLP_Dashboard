@@ -234,10 +234,10 @@
                               Waktu
                             </button>
                                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                                    <li><a class="dropdown-item" href="#">All time</a></li>
-                                    <li><a class="dropdown-item" href="#">14 Hari</a></li>
-                                    <li><a class="dropdown-item" href="#">7 Hari</a></li>
-                                    <li><a class="dropdown-item" href="#">Hari ini</a></li>
+                                    <li id="T1" onclick="gantiGambar(this.id)"><a class="dropdown-item">All time</a></li>
+                                    <li id="T2" onclick="gantiGambar(this.id)"><a class=" dropdown-item">14 Hari</a></li>
+                                    <li id="T3" onclick="gantiGambar(this.id)"><a class="dropdown-item">7 Hari</a></li>
+                                    <li id="T4" onclick="gantiGambar(this.id)"><a class=" dropdown-item">Hari ini</a></li>
                                 </ul>
                             </div>
                         </center>
@@ -256,10 +256,14 @@
                                 <h4 class="card-title" style="font-size:30px;"><b>Sentiment Analysis</b></h4>
                                 <div id="myDiv"></div>
                                 <script>
-                                    axios({method: 'post',
+                                    axios({
+                                        method: 'post',
                                         url: 'http://127.0.0.1:5000/api/sentiment',
-                                        data:{status: "minta datanya dong", "calon": "prabowo"}
-                                    }).then(function (response) {
+                                        data: {
+                                            status: "minta datanya dong",
+                                            "calon": "prabowo"
+                                        }
+                                    }).then(function(response) {
                                         var alltime = response.data["All time"];
                                         pie = document.getElementById('myDiv');
                                         var data = [{
@@ -272,7 +276,7 @@
                                             width: 500
                                         };
                                         Plotly.newPlot(pie, data, layout);
-                                        });
+                                    });
                                 </script>
                             </center>
                         </div>
@@ -294,13 +298,13 @@
                                     <img src="{{url_for('static', filename='Wordcloud/Wordcloud_mention_ahy.jpg')}}" class="figure-img img-fluid rounded" style="width=400px;height=100px;" alt="Alya">
                                 </div> -->
                                 <div id="div_netral " class="figure-img img-fluid rounded" style="display: block;">
-                                    <img src="{{url_for('static', filename='assets/Wordcloud/ahy/wordcloud_mention_ahy_neu.jpg')}}" style="width:90%; height:90%" id="gambarNetral" alt=" ">
+                                    <img src="{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_All time_neu.jpg')}}" style="width:90%; height:90%" id="gambarNetral" alt=" ">
                                 </div>
                                 <div id="div_positif " class="figure-img img-fluid rounded" style="display: none;">
-                                    <img src="{{url_for('static', filename='assets/Wordcloud/ahy/wordcloud_mention_ahy_pos.jpg')}}" style="width:90%; height:90%" id="gambarPositif" alt=" ">
+                                    <img src="{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_All time_pos.jpg')}}" style="width:90%; height:90%" id="gambarPositif" alt=" ">
                                 </div>
                                 <div id="div_negatif " class="figure-img img-fluid rounded" style="display: none;">
-                                    <img src="{{url_for('static', filename='assets/Wordcloud/ahy/wordcloud_mention_ahy_neg.jpg')}}" style="width:90%; height:90%" id="gambarNegatif" alt=" ">
+                                    <img src="{{url_for('static', filename='assets/Wordcloud/ahy/wordcloud_mention_prabowo_All time_neg.jpg')}}" style="width:90%; height:90%" id="gambarNegatif" alt=" ">
                                 </div>
                             </center>
                         </div>
@@ -337,7 +341,7 @@
                         <center>
                             <h4 class="card-title" style="font-size:30px;"><b>WordCloud</b></h4>
                             <h5 class="card-title" style="font-size:15px;">WordCloud from Prabowo Tweets</h5>
-                            <img src="{{url_for('static', filename='assets/Wordcloud/wordcloud_profile_prabowo.jpg')}}" class="figure-img img-fluid rounded" style="height:360px; width:700px;" alt="Alya ">
+                            <img src="{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_profile_prabowo.jpg')}}" class="figure-img img-fluid rounded" style="height:360px; width:700px;" alt="Alya ">
                         </center>
                     </div>
                 </div>
@@ -447,21 +451,21 @@
 
         function gantiGambar(gantiGambar) {
             if (gantiGambar === "T1") {
-                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_neu.jpg')}}";
-                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_pos.jpg')}}";
-                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_neg.jpg')}}";
+                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_All time_neu.jpg')}}";
+                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_All time_pos.jpg')}}";
+                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_All time_neg.jpg')}}";
             } else if (gantiGambar === "T2") {
-                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/ganjar/wordcloud_mention_ganjar_neu.jpg')}}";
-                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/ganjar/wordcloud_mention_ganjar_pos.jpg')}}";
-                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/ganjar/wordcloud_mention_ganjar_neg.jpg')}}";
+                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_14 Hari_neu.jpg')}}";
+                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_14 Hari_pos.jpg')}}";
+                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_14 Hari_neg.jpg')}}";
             } else if (gantiGambar === "T3") {
-                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_neu.jpg')}}";
-                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_pos.jpg')}}";
-                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_neg.jpg')}}";
+                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_7 Hari_neu.jpg')}}";
+                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_7 Hari_pos.jpg')}}";
+                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_7 Hari_neg.jpg')}}";
             } else if (gantiGambar === "T4") {
-                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_neu.jpg')}}";
-                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_pos.jpg')}}";
-                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_neg.jpg')}}";
+                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_Hari ini_neu.jpg')}}";
+                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_Hari ini_pos.jpg')}}";
+                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/prabowo/wordcloud_mention_prabowo_Hari ini_neg.jpg')}}";
             }
         }
     </script>
