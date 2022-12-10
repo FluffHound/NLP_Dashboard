@@ -254,7 +254,14 @@
                         <div class="card-body">
                             <center>
                                 <h4 class="card-title" style="font-size:30px;"><b>Sentiment Analysis</b></h4>
-                                <div id="myDiv"></div>
+                                <div id="myDiv" style="display: block;">
+                                </div>
+                                <div id="myDiv2" style="display: none;">
+                                </div>
+                                <div id="myDiv3" style="display: none;">
+                                </div>
+                                <div id="myDiv4" style="display: none;">
+                                </div>
                                 <script>
                                     axios({
                                         method: 'post',
@@ -276,6 +283,45 @@
                                             width: 500
                                         };
                                         Plotly.newPlot(pie, data, layout);
+
+                                        var hari14 = response.data["14 Hari"];
+                                        pie2 = document.getElementById('myDiv2');
+                                        var data2 = [{
+                                            values: [hari14["positive"], hari14["neutral"], hari14["negative"]],
+                                            labels: ['Positif', 'Netral', 'Negatif'],
+                                            type: 'pie'
+                                        }];
+                                        var layout = {
+                                            height: 400,
+                                            width: 500
+                                        };
+                                        Plotly.newPlot(pie2, data2, layout);
+
+                                        var hari7 = response.data["7 Hari"];
+                                        pie3 = document.getElementById('myDiv3');
+                                        var data3 = [{
+                                            values: [hari7["positive"], hari7["neutral"], hari7["negative"]],
+                                            labels: ['Positif', 'Netral', 'Negatif'],
+                                            type: 'pie'
+                                        }];
+                                        var layout = {
+                                            height: 400,
+                                            width: 500
+                                        };
+                                        Plotly.newPlot(pie3, data3, layout);
+
+                                        var now = response.data["Hari ini"];
+                                        pie4 = document.getElementById('myDiv4');
+                                        var data4 = [{
+                                            values: [now["positive"], now["neutral"], now["negative"]],
+                                            labels: ['Positif', 'Netral', 'Negatif'],
+                                            type: 'pie'
+                                        }];
+                                        var layout = {
+                                            height: 400,
+                                            width: 500
+                                        };
+                                        Plotly.newPlot(pie4, data4, layout);
                                     });
                                 </script>
                             </center>

@@ -258,13 +258,6 @@
                         <div class="card-body">
                             <center>
                                 <h4 class="card-title" style="font-size:30px;"><b>Sentiment Analysis</b></h4>
-                                <<<<<<< Updated upstream <<<<<<< Updated upstream <<<<<<< Updated upstream <div id="myDiv">
-                        </div>
-                        =======
-                        <div id="myDiv" style="display: block;">
-                            =======
-                            <div id="myDiv" style="display: block;">
-                                =======
                                 <div id="myDiv" style="display: block;">
                                 </div>
                                 <div id="myDiv2" style="display: none;">
@@ -272,22 +265,7 @@
                                 <div id="myDiv3" style="display: none;">
                                 </div>
                                 <div id="myDiv4" style="display: none;">
-                                    >>>>>>> Stashed changes
                                 </div>
-                                <div id="myDiv2" style="display: none;">
-                                </div>
-                                <div id="myDiv3" style="display: none;">
-                                </div>
-                                <div id="myDiv4" style="display: none;">
-                                    >>>>>>> Stashed changes
-                                </div>
-                                <div id="myDiv2" style="display: none;">
-                                </div>
-                                <div id="myDiv3" style="display: none;">
-                                </div>
-                                <div id="myDiv4" style="display: none;">
-                                </div>
-                                >>>>>>> Stashed changes
                                 <script>
                                     axios({
                                         method: 'post',
@@ -350,62 +328,62 @@
                                         Plotly.newPlot(pie4, data4, layout);
                                     });
                                 </script>
-                                </center>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- WordCloud Sentimen-->
-                    <div class="col-sm-12 col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <center>
-                                    <h4 class="card-title" style="font-size: 30px;"><b>WordCloud</b></h4>
-                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                        <button type="button" class="btn btn-danger" onclick="negatif() " id="btn ">Negatif</button>
-                                        <button type="button" class="btn btn-success" onclick="positif() " id="btn ">Positif</button>
-                                        <button type="button" class="btn btn-warning" onclick="netral() " id="btn ">All</button>
-                                    </div>
-                                    <br>
-                                    <!-- <div>
-                                    <img src="{{url_for('static', filename='Wordcloud/Wordcloud_mention_ahy.jpg')}}" class="figure-img img-fluid rounded" style="width=400px;height=100px;" alt="Alya">
-                                </div> -->
-                                    <div id="div_netral " class="figure-img img-fluid rounded" style="display: block;">
-                                        <img src="{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_All time_neu.jpg')}}" style="width:90%; height:90%" id="gambarNetral" alt=" ">
-                                    </div>
-                                    <div id="div_positif " class="figure-img img-fluid rounded" style="display: none;">
-                                        <img src="{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_All time_pos.jpg')}}" style="width:90%; height:90%" id="gambarPositif" alt=" ">
-                                    </div>
-                                    <div id="div_negatif " class="figure-img img-fluid rounded" style="display: none;">
-                                        <img src="{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_All time_neg.jpg')}}" style="width:90%; height:90%" id="gambarNegatif" alt=" ">
-                                    </div>
-                                </center>
-                            </div>
+                            </center>
                         </div>
                     </div>
                 </div>
-                <div class="col" style="color:black; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size: 30px;">
-                    <p align="center" style="font-size: 23px;"><b>Apa yang sering Anies Baswedan Bahas di Akun Twitternya?</b></p>
-                    <center>
-                        <a class="tombol" href="https://twitter.com/aniesbaswedan"><i class="fab fa-twitter"style='color:#08b0e7;font-size: 35px;'></i><a href="https://twitter.com/aniesbaswedan" class="stretched-link" style="font-size: 22px;">@aniesbaswedan</a></a>
-                    </center>
-                </div>
-            </div>
-
-            <!-- Topic Modelling -->
-            <div class="row">
-                <div class="col-10" style="margin:auto;">
+                <!-- WordCloud Sentimen-->
+                <div class="col-sm-12 col-md-6">
                     <div class="card">
                         <div class="card-body">
                             <center>
-                                <h4 class="card-title mb-0" style="font-size: 30px; margin: auto;"><b>Topic Modelling</b></h4>
-                                <iframe src="{{url_for('static', filename='iframeTM/lda_anies.html')}}" style="border:none;margin: auto; width:2000px ; height: 700px" title="Iframe Example"></iframe>
-                                <!-- <img src="{{url_for('static', filename='./assets/images/Topic Modelling.png')}}" width="400" height="400" class="figure-img img-fluid rounded" alt="Alya"> -->
+                                <h4 class="card-title" style="font-size: 30px;"><b>WordCloud</b></h4>
+                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                    <button type="button" class="btn btn-danger" onclick="negatif() " id="btn ">Negatif</button>
+                                    <button type="button" class="btn btn-success" onclick="positif() " id="btn ">Positif</button>
+                                    <button type="button" class="btn btn-warning" onclick="netral() " id="btn ">All</button>
+                                </div>
+                                <br>
+                                <!-- <div>
+                                    <img src="{{url_for('static', filename='Wordcloud/Wordcloud_mention_ahy.jpg')}}" class="figure-img img-fluid rounded" style="width=400px;height=100px;" alt="Alya">
+                                </div> -->
+                                <div id="div_netral " class="figure-img img-fluid rounded" style="display: block;">
+                                    <img src="{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_All time_neu.jpg')}}" style="width:90%; height:90%" id="gambarNetral" alt=" ">
+                                </div>
+                                <div id="div_positif " class="figure-img img-fluid rounded" style="display: none;">
+                                    <img src="{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_All time_pos.jpg')}}" style="width:90%; height:90%" id="gambarPositif" alt=" ">
+                                </div>
+                                <div id="div_negatif " class="figure-img img-fluid rounded" style="display: none;">
+                                    <img src="{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_All time_neg.jpg')}}" style="width:90%; height:90%" id="gambarNegatif" alt=" ">
+                                </div>
                             </center>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col" style="color:black; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size: 30px;">
+                <p align="center" style="font-size: 23px;"><b>Apa yang sering Anies Baswedan Bahas di Akun Twitternya?</b></p>
+                <center>
+                    <a class="tombol" href="https://twitter.com/aniesbaswedan"><i class="fab fa-twitter"style='color:#08b0e7;font-size: 35px;'></i><a href="https://twitter.com/aniesbaswedan" class="stretched-link" style="font-size: 22px;">@aniesbaswedan</a></a>
+                </center>
+            </div>
         </div>
+
+        <!-- Topic Modelling -->
+        <div class="row">
+            <div class="col-10" style="margin:auto;">
+                <div class="card">
+                    <div class="card-body">
+                        <center>
+                            <h4 class="card-title mb-0" style="font-size: 30px; margin: auto;"><b>Topic Modelling</b></h4>
+                            <iframe src="{{url_for('static', filename='iframeTM/lda_anies.html')}}" style="border:none;margin: auto; width:2000px ; height: 700px" title="Iframe Example"></iframe>
+                            <!-- <img src="{{url_for('static', filename='./assets/images/Topic Modelling.png')}}" width="400" height="400" class="figure-img img-fluid rounded" alt="Alya"> -->
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
     <!-- WordCloud tweet kandidat -->
     <div class="row">
