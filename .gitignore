@@ -1,4 +1,5 @@
-API\__pycache__
+**/__pycache__/
 *.pyc
 *.pyc
 *.jpg
+/API/project-nlp-9b41d-firebase-adminsdk-w4jxt-038c435e97.json
