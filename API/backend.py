@@ -369,7 +369,7 @@ def lda():
 
 
 def main():
-    # sentiment()
+    sentiment()
     lda()
     wordcloud()
 

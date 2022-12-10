@@ -4,7 +4,7 @@ from numpy import random
 import pandas as pd
 import joblib
 import requests
-from req_api import *
+
 
 app = Flask(__name__)
 
@@ -21,24 +21,141 @@ def candidate():
     return render_template('Infopedia Kandidat.html')
 @app.route('/anies')
 def anies():
-    times = req('anies','http://127.0.0.1:5000/')
+    calon = 'anies'
+    ## Sentiment
+    r = requests.post(
+        "http://127.0.0.1:5000/api/sentiment",
+        json={"status": "minta datanya dong", "calon": calon},
+    )
+    data = r.json()
+    times = data['All time']['last_update']
+    ## LDA
+    r2 = requests.post(
+            "http://127.0.0.1:5000/api/LDA",
+            json={"status": "minta datanya dong", "calon": calon},
+        )
+    save = open(f"static/iframeTM/lda_{calon}.html", "wb").write(r2.content)
+    ## Wordcloud Sentiment
+    waktu = ['All time','14 Hari','7 Hari','Hari ini']
+    sent = ['pos','neg','neu']
+
+    for i in waktu:
+        for j in sent:
+            r3 = requests.post(
+            "http://127.0.0.1:5000/api/wordcloudsent", json={"status": "minta datanya dong", "calon": calon,'waktu':i,'sentiment':j},)
+            save = open(f"static/assets/Wordcloud/{calon}/wordcloud_mention_{calon}_{i}_{j}.jpg", "wb").write(r3.content)
+    
+    ## Wordcloud Profile
+    r4 = requests.post(
+        "http://127.0.0.1:5000/api/wordcloudprofile",
+        json={"status": "minta datanya dong", "calon": calon},
+    )
+    save = open(f"static/assets/Wordcloud/{calon}/wordcloud_profile_{calon}.jpg", "wb").write(r4.content)
     return render_template('Anies.html',time=times)
 @app.route('/ahy')
 def ahy():
-    times = req('ahy','http://127.0.0.1:5000/')
-    return render_template('AHY.html',time=times)
+    calon = 'ahy'
+    ## LDA
+    r2 = requests.post(
+            "http://127.0.0.1:5000/api/LDA",
+            json={"status": "minta datanya dong", "calon": calon},
+        )
+    save = open(f"static/iframeTM/lda_{calon}.html", "wb").write(r2.content)
+    ## Wordcloud Sentiment
+    waktu = ['All time','14 Hari','7 Hari','Hari ini']
+    sent = ['pos','neg','neu']
+
+    for i in waktu:
+        for j in sent:
+            r3 = requests.post(
+            "http://127.0.0.1:5000/api/wordcloudsent", json={"status": "minta datanya dong", "calon": calon,'waktu':i,'sentiment':j},)
+            save = open(f"static/assets/Wordcloud/{calon}/wordcloud_mention_{calon}_{i}_{j}.jpg", "wb").write(r3.content)
+    
+    ## Wordcloud Profile
+    r4 = requests.post(
+        "http://127.0.0.1:5000/api/wordcloudprofile",
+        json={"status": "minta datanya dong", "calon": calon},
+    )
+    save = open(f"static/assets/Wordcloud/{calon}/wordcloud_profile_{calon}.jpg", "wb").write(r4.content)
+    return render_template('AHY.html')
 @app.route('/ganjar')
 def ganjar():
-    times = req('ganjar','http://127.0.0.1:5000/')
-    return render_template('Ganjar.html',time=times)
+    calon = 'ganjar'
+    ## LDA
+    r2 = requests.post(
+            "http://127.0.0.1:5000/api/LDA",
+            json={"status": "minta datanya dong", "calon": calon},
+        )
+    save = open(f"static/iframeTM/lda_{calon}.html", "wb").write(r2.content)
+    ## Wordcloud Sentiment
+    waktu = ['All time','14 Hari','7 Hari','Hari ini']
+    sent = ['pos','neg','neu']
+
+    for i in waktu:
+        for j in sent:
+            r3 = requests.post(
+            "http://127.0.0.1:5000/api/wordcloudsent", json={"status": "minta datanya dong", "calon": calon,'waktu':i,'sentiment':j},)
+            save = open(f"static/assets/Wordcloud/{calon}/wordcloud_mention_{calon}_{i}_{j}.jpg", "wb").write(r3.content)
+    
+    ## Wordcloud Profile
+    r4 = requests.post(
+        "http://127.0.0.1:5000/api/wordcloudprofile",
+        json={"status": "minta datanya dong", "calon": calon},
+    )
+    save = open(f"static/assets/Wordcloud/{calon}/wordcloud_profile_{calon}.jpg", "wb").write(r4.content)
+    return render_template('Ganjar.html')
 @app.route('/prabowo')
 def prabowo():
-    times = req('prabowo','http://127.0.0.1:5000/')
-    return render_template('Prabowo.html',time=times)
+    calon = 'prabowo'
+    ## LDA
+    r2 = requests.post(
+            "http://127.0.0.1:5000/api/LDA",
+            json={"status": "minta datanya dong", "calon": calon},
+        )
+    save = open(f"static/iframeTM/lda_{calon}.html", "wb").write(r2.content)
+    ## Wordcloud Sentiment
+    waktu = ['All time','14 Hari','7 Hari','Hari ini']
+    sent = ['pos','neg','neu']
+
+    for i in waktu:
+        for j in sent:
+            r3 = requests.post(
+            "http://127.0.0.1:5000/api/wordcloudsent", json={"status": "minta datanya dong", "calon": calon,'waktu':i,'sentiment':j},)
+            save = open(f"static/assets/Wordcloud/{calon}/wordcloud_mention_{calon}_{i}_{j}.jpg", "wb").write(r3.content)
+    
+    ## Wordcloud Profile
+    r4 = requests.post(
+        "http://127.0.0.1:5000/api/wordcloudprofile",
+        json={"status": "minta datanya dong", "calon": calon},
+    )
+    save = open(f"static/assets/Wordcloud/{calon}/wordcloud_profile_{calon}.jpg", "wb").write(r4.content)
+    return render_template('Prabowo.html')
 @app.route('/ridwan')
 def rk():
-    times = req('rk','http://127.0.0.1:5000/')
-    return render_template('Ridwan Kamil.html',time=times)
+    calon = 'rk'
+    ## LDA
+    r2 = requests.post(
+            "http://127.0.0.1:5000/api/LDA",
+            json={"status": "minta datanya dong", "calon": calon},
+        )
+    save = open(f"static/iframeTM/lda_{calon}.html", "wb").write(r2.content)
+    ## Wordcloud Sentiment
+    waktu = ['All time','14 Hari','7 Hari','Hari ini']
+    sent = ['pos','neg','neu']
+
+    for i in waktu:
+        for j in sent:
+            r3 = requests.post(
+            "http://127.0.0.1:5000/api/wordcloudsent", json={"status": "minta datanya dong", "calon": calon,'waktu':i,'sentiment':j},)
+            save = open(f"static/assets/Wordcloud/{calon}/wordcloud_mention_{calon}_{i}_{j}.jpg", "wb").write(r3.content)
+    
+    ## Wordcloud Profile
+    r4 = requests.post(
+        "http://127.0.0.1:5000/api/wordcloudprofile",
+        json={"status": "minta datanya dong", "calon": calon},
+    )
+    save = open(f"static/assets/Wordcloud/{calon}/wordcloud_profile_{calon}.jpg", "wb").write(r4.content)
+    return render_template('Ridwan Kamil.html')
 
 
 if __name__ == '__main__':
