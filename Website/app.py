@@ -131,8 +131,8 @@ def prabowo():
     save = open(f"static/assets/Wordcloud/{calon}/wordcloud_profile_{calon}.jpg", "wb").write(r4.content)
     return render_template('Prabowo.html')
 @app.route('/ridwan')
-def ridwan():
-    calon = 'ridwan'
+def rk():
+    calon = 'rk'
     ## LDA
     r2 = requests.post(
             "http://127.0.0.1:5000/api/LDA",
