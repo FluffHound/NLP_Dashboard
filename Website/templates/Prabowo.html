@@ -271,12 +271,16 @@
                                             "calon": "prabowo"
                                         }
                                     }).then(function(response) {
+                                        var ultimateColors = ['rgb(56, 75, 126)', 'rgb(169, 169, 169)', 'rgb(175, 49, 35)'];
                                         var alltime = response.data["All time"];
                                         pie = document.getElementById('myDiv');
                                         var data = [{
                                             values: [alltime["positive"], alltime["neutral"], alltime["negative"]],
                                             labels: ['Positif', 'Netral', 'Negatif'],
-                                            type: 'pie'
+                                            type: 'pie',
+                                            marker: {
+                                                colors: ultimateColors
+                                            }
                                         }];
                                         var layout = {
                                             height: 400,
@@ -289,7 +293,10 @@
                                         var data2 = [{
                                             values: [hari14["positive"], hari14["neutral"], hari14["negative"]],
                                             labels: ['Positif', 'Netral', 'Negatif'],
-                                            type: 'pie'
+                                            type: 'pie',
+                                            marker: {
+                                                colors: ultimateColors
+                                            }
                                         }];
                                         var layout = {
                                             height: 400,
@@ -302,7 +309,10 @@
                                         var data3 = [{
                                             values: [hari7["positive"], hari7["neutral"], hari7["negative"]],
                                             labels: ['Positif', 'Netral', 'Negatif'],
-                                            type: 'pie'
+                                            type: 'pie',
+                                            marker: {
+                                                colors: ultimateColors
+                                            }
                                         }];
                                         var layout = {
                                             height: 400,
@@ -315,7 +325,10 @@
                                         var data4 = [{
                                             values: [now["positive"], now["neutral"], now["negative"]],
                                             labels: ['Positif', 'Netral', 'Negatif'],
-                                            type: 'pie'
+                                            type: 'pie',
+                                            marker: {
+                                                colors: ultimateColors
+                                            }
                                         }];
                                         var layout = {
                                             height: 400,
