@@ -560,7 +560,7 @@
                 document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_7 Hari_neu.jpg')}}";
                 document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_7 Hari_pos.jpg')}}";
                 document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_7 Hari_neg.jpg')}}";
-                var x = document.getElementById("MyDiv");
+                var x = document.getElementById("myDiv");
                 if (x.style.display === "block") {
                     x.style.display = "none";
                 }
@@ -576,7 +576,7 @@
                 if (za.style.display === "block") {
                     za.style.display = "none";
                 }
-            } else if (gantiGambar === "T4") {
+            }   else if (gantiGambar === "T4") {
                 document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_Hari ini_neu.jpg')}}";
                 document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_Hari ini_pos.jpg')}}";
                 document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/anies/wordcloud_mention_anies_Hari ini_neg.jpg')}}";
@@ -596,7 +596,7 @@
                 if (za.style.display === "none") {
                     za.style.display = "block";
                 }
-            }
+            }   
         }
     </script>
 </body>
