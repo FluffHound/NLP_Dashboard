@@ -216,7 +216,7 @@
             </div>
             <div class="row">
                 <p align="center">
-                    Terakhir diperbarui pada tanggal 20/11/2022 pada pukul 00.00
+                    Terakhir diperbarui pada {{time}}
                 </p>
             </div>
             <div class="row">
@@ -343,13 +343,13 @@
                                     <img src="{{url_for('static', filename='Wordcloud/Wordcloud_mention_ahy.jpg')}}" class="figure-img img-fluid rounded" style="width=400px;height=100px;" alt="Alya">
                                 </div> -->
                                 <div id="div_netral " class="figure-img img-fluid rounded" style="display: block;">
-                                    <img src="{{url_for('static', filename='assets/Wordcloud/rk/wordcloud_mention_ridwan_All time_neu.jpg')}}" style="width:90%; height:90%" id="gambarNetral" alt=" ">
+                                    <img src="{{url_for('static', filename='assets/Wordcloud/rk/wordcloud_mention_rk_All time_neu.jpg')}}" style="width:90%; height:90%" id="gambarNetral" alt=" ">
                                 </div>
                                 <div id="div_positif " class="figure-img img-fluid rounded" style="display: none;">
-                                    <img src="{{url_for('static', filename='assets/Wordcloud/rk/wordcloud_mention_ridwan_All time_pos.jpg')}}" style="width:90%; height:90%" id="gambarPositif" alt=" ">
+                                    <img src="{{url_for('static', filename='assets/Wordcloud/rk/wordcloud_mention_rk_All time_pos.jpg')}}" style="width:90%; height:90%" id="gambarPositif" alt=" ">
                                 </div>
                                 <div id="div_negatif " class="figure-img img-fluid rounded" style="display: none;">
-                                    <img src="{{url_for('static', filename='assets/Wordcloud/rk/wordcloud_mention_ridwan_All time_neg.jpg')}}" style="width:90%; height:90%" id="gambarNegatif" alt=" ">
+                                    <img src="{{url_for('static', filename='assets/Wordcloud/rk/wordcloud_mention_rk_All time_neg.jpg')}}" style="width:90%; height:90%" id="gambarNegatif" alt=" ">
                                 </div>
                             </center>
                         </div>
@@ -396,8 +396,8 @@
                 <div class="card-body ">
                     <center>
                         <h4 class="card-title" style="font-size: 30px;"><b>Recent Tweets</b></h4>
-                        <img src="{{url_for('static', filename='./assets/images/Recent Tweets.png')}}" width="400" height="40" class="figure-img img-fluid rounded" alt="Alya">
-
+                        <a class="twitter-timeline" data-width="700" data-height="360" href="https://twitter.com/ridwankamil?ref_src=twsrc%5Etfw">Tweets by Ridwan Kamil</a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </center>
                 </div>
             </div>
@@ -495,9 +495,9 @@
 
         function gantiGambar(gantiGambar) {
             if (gantiGambar === "T1") {
-                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/rk/wordcloud_mention_ridwan_All time_neu.jpg')}}";
-                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/rk/wordcloud_mention_ridwan_All time_pos.jpg')}}";
-                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/rk/wordcloud_mention_ridwan_All time_neg.jpg')}}";
+                document.getElementById("gambarNetral").src = "{{url_for('static', filename='assets/Wordcloud/rk/wordcloud_mention_rk_All time_neu.jpg')}}";
+                document.getElementById("gambarPositif").src = "{{url_for('static', filename='assets/Wordcloud/rk/wordcloud_mention_rk_All time_pos.jpg')}}";
+                document.getElementById("gambarNegatif").src = "{{url_for('static', filename='assets/Wordcloud/rk/wordcloud_mention_rk_All time_neg.jpg')}}";
                 var x = document.getElementById("myDiv");
                 if (x.style.display === "none") {
                     x.style.display = "block";
