@@ -12,7 +12,7 @@ def req(calon, link):
     times = datetime.strptime(times,'%a, %d %b %Y %H:%M:%S %Z')
     times = times.strftime("tanggal %d-%m-%Y pukul %H:%M:%S")
 
-    tmodified = datetime.fromtimestamp(os.path.getmtime("static/assets/Wordcloud/rk/wordcloud_profile_rk.jpg")).date()
+    tmodified = datetime.fromtimestamp(os.path.getmtime(f"static/assets/Wordcloud/{calon}/wordcloud_profile_{calon}.jpg")).date()
     while True:
         if datetime.now().date() > tmodified:
             ## LDA
@@ -37,6 +37,7 @@ def req(calon, link):
                 json={"status": "minta datanya dong", "calon": calon},
             )
             save = open(f"static/assets/Wordcloud/{calon}/wordcloud_profile_{calon}.jpg", "wb").write(r4.content)
+            break
         else:
             break
 
